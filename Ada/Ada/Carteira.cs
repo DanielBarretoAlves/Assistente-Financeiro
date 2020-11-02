@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ada
 {
-    interface Carteira
+    interface Bolso
     {
     }
 }

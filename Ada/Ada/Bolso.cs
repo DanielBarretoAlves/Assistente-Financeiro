@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ada
 {
-    public abstract class Produto
+    public abstract class Bolso
     {
         private int valor;
         private int tipo;
