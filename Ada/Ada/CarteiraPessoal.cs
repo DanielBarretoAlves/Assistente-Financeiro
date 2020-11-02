@@ -9,5 +9,6 @@ namespace Ada
         private float budget;
         private Gasto[] gastos;
         private Renda[] rendas;
+        //test
     }
 }
