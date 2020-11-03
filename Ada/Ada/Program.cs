@@ -6,7 +6,9 @@ namespace Ada
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Daniel!");
+            Bolso c = new CarteiraPessoal();
+            c
+
         }
     }
 }
