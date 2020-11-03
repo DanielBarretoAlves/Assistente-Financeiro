@@ -7,8 +7,8 @@ namespace Ada
     public abstract class Produto
     {
 
-        int valor;
-        int tipo;
+       private int valor;
+       private int tipo;
 
         public virtual void calcJuros() { }
     }
