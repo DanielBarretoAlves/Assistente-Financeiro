@@ -6,5 +6,6 @@ namespace Ada
 {
     class Renda: Produto
     {
+        //TODO: Incremental
     }
 }

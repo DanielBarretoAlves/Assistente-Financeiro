@@ -6,5 +6,16 @@ namespace Ada
 {
     interface Bolso
     {
+
+        public void addRenda();
+        public void addGasto();
+
+        public void escreverGasto();
+        public void lerGasto();
+        public void escreverRenda();
+        public void lerRenda();
+        public void expandirGasto();
+        public void expandirRenda();
+
     }
 }
