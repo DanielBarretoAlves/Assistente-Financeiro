@@ -4,12 +4,7 @@ using System.Text;
 
 namespace Ada
 {
-    public abstract class Bolso
+    interface Bolso
     {
-        private int valor;
-        private int tipo;
-
-
-        public virtual void calcJuros() { }
     }
 }
