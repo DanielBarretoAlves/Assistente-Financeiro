@@ -6,10 +6,9 @@ namespace Ada
 {
     public class Gasto
     {
-        private int categoria;
+        private  string categoria;
         private int importancia;
         private int incremental;
-        //teste
 
     }
 }
