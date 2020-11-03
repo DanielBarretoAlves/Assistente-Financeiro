@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ada: Produto
+namespace Ada
 {
-    class Renda
+    class Renda: Produto
     {
     }
 }
