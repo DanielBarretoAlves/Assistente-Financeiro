@@ -17,5 +17,7 @@ namespace Ada
         public void expandirGasto();
         public void expandirRenda();
 
+        public bool IsFull(Object[] dado);
+
     }
 }

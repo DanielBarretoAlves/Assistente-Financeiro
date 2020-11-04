@@ -9,8 +9,9 @@ namespace Ada
         private float budget;
         private Gasto[] gastos;
         private Renda[] rendas;
-        
-
+        private Salario[] salarios;
+        private string nome;
+        private static int tipo = 1;
 
 
         public void addRenda()
@@ -42,18 +43,42 @@ namespace Ada
         {
             throw new NotImplementedException();
         }
-
+        //AQUI
         public void expandirGasto()
         {
-            if(gastos[0] == null)
+            Gasto[] reserva = new Gasto[this.gastos.Length * 2];
+            if(IsFull(gastos))
             {
-                Console.WriteLine("É Vazio");
+                for(int i = 0; i < gastos.Length; i++)
+                {
+                    reserva[i] = gastos[i];
+                }
+                gastos = reserva;
             }
+            
         }
 
         public void expandirRenda()
         {
             throw new NotImplementedException();
+        }
+
+        public bool  IsFull(Object[] dado)
+        {
+            int size = 0;
+            //Somando a quantidade de casas do array oculpadas
+            for (int i = 0; i < dado.Length; i++)
+            {
+                if (dado[i] == null)
+                {
+                    size++;
+                }
+            }
+            if(dado.Length == size)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

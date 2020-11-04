@@ -7,7 +7,7 @@ namespace Ada
         static void Main(string[] args)
         {
             Bolso c = new CarteiraPessoal();
-            c
+            c.expandirGasto();
 
         }
     }
