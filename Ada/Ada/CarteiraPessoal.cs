@@ -13,12 +13,6 @@ namespace Ada
         private string nome;
         private static int tipo = 1;
 
-        public float Budget { get => budget; set => budget = value; }
-
-        public CarteiraPessoal()
-        {
-        }
-
         public void addRenda()
         {
             throw new NotImplementedException();
