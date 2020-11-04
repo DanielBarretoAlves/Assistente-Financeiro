@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Ada
 {
-    class Salario
+    public class Salario : Produto
     {
 
-        public void adicionarHoraExtra(int valHora, int numHoras) { }
+        public object adicionarHoraExtra(float valHora, int numHoras) {
+
+            CarteiraPessoal carteira = new CarteiraPessoal();
+
+            float horaExtra = valHora * numHoras;
+            carteira.Budget = carteira.Budget + horaExtra;
+            return carteira;
+        }
 
         public void calcComissão() { }
     }
