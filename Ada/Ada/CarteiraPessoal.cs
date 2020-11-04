@@ -69,7 +69,7 @@ namespace Ada
             //Somando a quantidade de casas do array oculpadas
             for (int i = 0; i < dado.Length; i++)
             {
-                if (dado[i] == null)
+                if (dado[i] != null)
                 {
                     size++;
                 }
