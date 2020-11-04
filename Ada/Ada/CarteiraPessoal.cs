@@ -13,7 +13,7 @@ namespace Ada
         private string nome;
         private static int tipo = 1;
 
-
+        public CarteiraPessoal
         public void addRenda()
         {
             throw new NotImplementedException();
@@ -44,24 +44,21 @@ namespace Ada
             throw new NotImplementedException();
         }
         //AQUI
-        public void expandirGasto()
-        {
-            Gasto[] reserva = new Gasto[this.gastos.Length * 2];
-            if(IsFull(gastos))
-            {
-                for(int i = 0; i < gastos.Length; i++)
-                {
-                    reserva[i] = gastos[i];
-                }
-                gastos = reserva;
-            }
+        //public void expandirGasto()
+        //{
+        //    Gasto[] reserva = new Gasto[this.gastos.Length * 2];
+        //    if(IsFull(gastos))
+        //    {
+        //        for(int i = 0; i < gastos.Length; i++)
+        //        {
+        //            reserva[i] = gastos[i];
+        //        }
+        //        gastos = reserva;
+        //    }
             
-        }
+        //}
 
-        public void expandirRenda()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public bool  IsFull(Object[] dado)
         {
@@ -79,6 +76,19 @@ namespace Ada
                 return true;
             }
             return false;
+        }
+
+        public void expandir(object[] dado)
+        {
+            Object[] reserva = new Object[dado.Length * 2];
+            if (IsFull(dado))
+            {
+                for (int i = 0; i < dado.Length; i++)
+                {
+                    reserva[i] = dado[i];
+                }
+                dado = reserva;
+            }
         }
     }
 }

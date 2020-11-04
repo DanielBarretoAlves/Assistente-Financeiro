@@ -14,8 +14,7 @@ namespace Ada
         public void lerGasto();
         public void escreverRenda();
         public void lerRenda();
-        public void expandirGasto();
-        public void expandirRenda();
+        public void expandir(Object[] dado);
 
         public bool IsFull(Object[] dado);
 
