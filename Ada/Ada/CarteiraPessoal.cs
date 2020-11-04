@@ -21,7 +21,7 @@ namespace Ada
         public float Budget { get => budget; set => budget = value; }
         public Gasto[] Gastos { get => gastos; set => gastos = value; }
 
-        public CarteiraPessoal
+
         public void addRenda()
         {
             throw new NotImplementedException();
