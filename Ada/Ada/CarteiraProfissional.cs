@@ -31,6 +31,16 @@ namespace Ada
             throw new NotImplementedException();
         }
 
+        public void expandirGasto()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void expandirRenda()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool IsFull(object[] dado)
         {
             throw new NotImplementedException();

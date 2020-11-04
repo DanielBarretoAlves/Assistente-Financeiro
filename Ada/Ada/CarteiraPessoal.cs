@@ -52,19 +52,19 @@ namespace Ada
             throw new NotImplementedException();
         }
         //AQUI
-        //public void expandirGasto()
-        //{
-        //    Gasto[] reserva = new Gasto[this.gastos.Length * 2];
-        //    if(IsFull(gastos))
-        //    {
-        //        for(int i = 0; i < gastos.Length; i++)
-        //        {
-        //            reserva[i] = gastos[i];
-        //        }
-        //        gastos = reserva;
-        //    }
+        public void expandirGasto()
+        {
+            Gasto[] reserva = new Gasto[this.gastos.Length * 2];
+            if(IsFull(gastos))
+            {
+                for(int i = 0; i < gastos.Length; i++)
+                {
+                    reserva[i] = gastos[i];
+                }
+                gastos = reserva;
+            }
             
-        //}
+        }
 
         
 
@@ -97,6 +97,11 @@ namespace Ada
                 }
                 dado = reserva;
             }
+        }
+
+        public void expandirRenda()
+        {
+            throw new NotImplementedException();
         }
     }
 }
