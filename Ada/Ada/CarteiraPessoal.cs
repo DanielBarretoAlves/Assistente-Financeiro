@@ -13,6 +13,14 @@ namespace Ada
         private string nome;
         private static int tipo = 1;
 
+        public CarteiraPessoal()
+        {
+            gastos = new Gasto[5];
+        }
+
+        public float Budget { get => budget; set => budget = value; }
+        public Gasto[] Gastos { get => gastos; set => gastos = value; }
+
         public CarteiraPessoal
         public void addRenda()
         {
