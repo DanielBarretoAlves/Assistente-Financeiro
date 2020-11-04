@@ -10,6 +10,6 @@ namespace Ada
        private int valor;
        private int tipo;
 
-        public virtual void calcJuros() { }
+        //public virtual void calcJuros() { }
     }
 }
