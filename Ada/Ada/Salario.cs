@@ -8,13 +8,22 @@ namespace Ada
     public class Salario : Produto
     {
 
-        public object adicionarHoraExtra(float valHora, int numHoras) {
+        public void adicionarHoraExtra(float valHora, int numHoras, Object cart) {
 
-            CarteiraPessoal carteira = new CarteiraPessoal();
+           
+            CarteiraPessoal carteira1 = new CarteiraPessoal();
+            CarteiraProfissional carteira2 = new CarteiraProfissional();
 
-            float horaExtra = valHora * numHoras;
-            carteira.Budget = carteira.Budget + horaExtra;
-            return carteira;
+            if (cart == carteira1)
+            {
+                float horaExtra = valHora * numHoras;
+                carteira1.Budget = carteira1.Budget + horaExtra;
+            } else {
+                float horaExtra = valHora * numHoras;
+                carteira2.Budget = carteira2.Budget + horaExtra;
+
+            }
+            
         }
 
         public void calcComissão() { }
