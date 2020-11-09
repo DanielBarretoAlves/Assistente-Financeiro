@@ -66,7 +66,19 @@ namespace Ada
             
         }
 
+        public void expandirRenda()
+        {
+            Renda[] reserva = new Renda[this.gastos.Length * 2];
+            if(IsFull(rendas))
+            {
+                for(int i = 0; i < rendas.Length; i++)
+                {
+                    reserva[i] = rendas[i];
+                }
+                rendas = reserva;
+            }
         
+        }
 
         public bool  IsFull(Object[] dado)
         {
@@ -85,23 +97,5 @@ namespace Ada
             }
             return false;
         }
-
-        public void expandir(object[] dado)
-        {
-            Object[] reserva = new Object[dado.Length * 2];
-            if (IsFull(dado))
-            {
-                for (int i = 0; i < dado.Length; i++)
-                {
-                    reserva[i] = dado[i];
-                }
-                dado = reserva;
-            }
-        }
-
-        public void expandirRenda()
-        {
-            throw new NotImplementedException();
-        }
-    }
+    }   
 }
