@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ada
 {
-    class CarteiraPessoal:Bolso
+    class CarteiraPessoal : Bolso
     {
         private float budget;
         private Gasto[] gastos;
@@ -22,7 +22,7 @@ namespace Ada
         public Gasto[] Gastos { get => gastos; set => gastos = value; }
 
 
-        public void addRenda()
+        public void addRenda(Renda r)
         {
             throw new NotImplementedException();
         }
