@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ada
 {
-    class Renda: Produto
+    class Renda : Produto
     {
         //TODO: Incremental
     }

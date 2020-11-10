@@ -11,6 +11,8 @@ namespace Ada
 
         public void addGasto();
 
+        public void addSalario();
+
         public void escreverGasto();
 
         public void lerGasto();
