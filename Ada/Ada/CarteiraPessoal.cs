@@ -22,7 +22,7 @@ namespace Ada
         public Gasto[] Gastos { get => gastos; set => gastos = value; }
 
 
-        public void addRenda(Renda r)
+        public bool addRenda(Renda r)
         {
             throw new NotImplementedException();
         }
