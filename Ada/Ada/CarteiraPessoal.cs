@@ -36,20 +36,13 @@ namespace Ada
                 {
                     gastos[i] = g;
 
-                }
-                return true;
-                } else {
+                }              
+                } else if(IsFull(gastos) == true) {
 
-                Gasto[] reserva = new Renda[this.gastos.Length * 2];
-                if (IsFull(rendas))
-                {
-                    for (int i = 0; i < rendas.Length; i++)
-                    {
-                        reserva[i] = rendas[i];
-                    }
-                    rendas = reserva;
+                expandirGasto();
+                addGasto(g);
                 }
-            }
+            return true;
         }
 
         public void escreverGasto()
