@@ -7,6 +7,9 @@ namespace Ada
 {
     public class Salario : Produto
     {
+        public Salario(int valor, int tipo) : base(valor, tipo)
+        {
+        }
 
         public void adicionarHoraExtra(float valHora, int numHoras, Object cart) {
 

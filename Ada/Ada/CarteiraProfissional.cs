@@ -6,6 +6,13 @@ namespace Ada
 {
     class CarteiraProfissional : Bolso
     {
+        private float budget;
+        private Gasto[] gastos;
+        private Renda[] rendas;
+        private Salario[] salarios;
+        private string nome;
+        private static int tipo = 0;
+        //Atributos
         public void addGasto()
         {
             throw new NotImplementedException();
