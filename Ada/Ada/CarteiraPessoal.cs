@@ -27,9 +27,29 @@ namespace Ada
             throw new NotImplementedException();
         }
 
-        public void addGasto()
+        public bool addGasto(Gasto g)
         {
-            throw new NotImplementedException();
+            Gasto gt = new Gasto();
+
+            if (IsFull(gastos) == false) {
+                for (int i = 0; i < gastos.Length; i++)
+                {
+                    gastos[i] = g;
+
+                }
+                return true;
+                } else {
+
+                Gasto[] reserva = new Renda[this.gastos.Length * 2];
+                if (IsFull(rendas))
+                {
+                    for (int i = 0; i < rendas.Length; i++)
+                    {
+                        reserva[i] = rendas[i];
+                    }
+                    rendas = reserva;
+                }
+            }
         }
 
         public void escreverGasto()
@@ -96,6 +116,11 @@ namespace Ada
                 return true;
             }
             return false;
+        }
+
+        public void addSalario()
+        {
+            throw new NotImplementedException();
         }
     }   
 }
