@@ -100,6 +100,19 @@ namespace Ada
         
         }
 
+        public void expandirSalarios()
+        {
+            Salario[] reserva = new Salario[this.salarios.Length * 2];
+            if (IsFull(rendas))
+            {
+                for (int i = 0; i < salarios.Length; i++)
+                {
+                    reserva[i] = salarios[i];
+                }
+                salarios = reserva;
+            }
+
+        }
         public bool  IsFull(Object[] dado)
         {
             int size = 0;
@@ -114,6 +127,27 @@ namespace Ada
             if(dado.Length == size)
             {
                 return true;
+            }
+            return false;
+        }
+
+        public bool addSalario(Salario s)
+        {
+            if (IsFull(salarios))
+            {
+                expandirSalarios();
+
+
+            }
+            //TODO: Expandir Salarios
+
+            for (int i = 0; i < salarios.Length; i++)
+            {
+                if (salarios[i] == null)
+                {
+                    salarios[i] = s;
+                    return true;
+                }
             }
             return false;
         }

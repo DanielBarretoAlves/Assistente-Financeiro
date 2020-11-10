@@ -7,11 +7,11 @@ namespace Ada
     interface Bolso
     {
 
-        public void addRenda();
+        public bool addRenda(Renda r);
 
-        public void addGasto();
+        public bool addGasto(Gasto g);
 
-        public void addSalario();
+        public bool addSalario(Salario s);
 
         public void escreverGasto();
 
