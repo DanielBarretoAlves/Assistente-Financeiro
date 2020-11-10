@@ -13,6 +13,8 @@ namespace Ada
         private string nome;
         private static int tipo = 0;
         //Atributos
+
+        public float Budget { get => budget; set => budget = value; }
         public void addGasto()
         {
             throw new NotImplementedException();
