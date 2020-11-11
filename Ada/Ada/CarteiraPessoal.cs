@@ -29,7 +29,6 @@ namespace Ada
 
         public bool addGasto(Gasto g)
         {
-            Gasto gt = new Gasto();
 
             if (IsFull(gastos) == false) {
                 for (int i = 0; i < gastos.Length; i++)
@@ -37,12 +36,31 @@ namespace Ada
                     gastos[i] = g;
 
                 }              
-                } else if(IsFull(gastos) == true) {
+            } else if(IsFull(gastos) == true) {
 
                 expandirGasto();
                 addGasto(g);
-                }
+            }
             return true;
+        }
+
+        public void setarGastos() {
+
+            int importancia, incremental, valor, tipo;
+            string categoria;
+            Console.WriteLine("insira uma importancia de 1 a 5");
+            importancia = int.Parse(Console.ReadLine());
+            Console.WriteLine("insira o incremental");
+            incremental = int.Parse(Console.ReadLine());
+            Console.WriteLine("insira o valor");
+            valor = int.Parse(Console.ReadLine());
+            Console.WriteLine("insira um tipo");
+            tipo = int.Parse(Console.ReadLine());
+            Console.WriteLine("insira uma categoria");
+            categoria = Console.ReadLine();
+
+            Gasto g = new Gasto(categoria, importancia, incremental, valor, tipo);
+
         }
 
         public void escreverGasto()
@@ -145,9 +163,5 @@ namespace Ada
             return false;
         }
 
-        public void addSalario()
-        {
-            throw new NotImplementedException();
-        }
     }   
 }
