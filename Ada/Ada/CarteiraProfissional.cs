@@ -6,41 +6,63 @@ namespace Ada
 {
     class CarteiraProfissional : Bolso
     {
-        private float budget;
+        private string nomeCarteira;
+        private float buget;
+        private static int tipo = 0;
+        private Salario[] sarios;
         private Gasto[] gastos;
         private Renda[] rendas;
-        private Salario[] salarios;
-        private string nome;
-        private static int tipo = 0;
-        //Atributos
 
-        public float Budget { get => budget; set => budget = value; }
-        public void addGasto()
+        //Construtor
+        public CarteiraProfissional(string nomeCarteira, float buget, Salario[] sarios, Gasto[] gastos, Renda[] rendas)
+        {
+            this.nomeCarteira = nomeCarteira;
+            this.buget = buget;
+            this.sarios = sarios;
+            this.gastos = gastos;
+            this.rendas = rendas;
+        }
+
+        //GETTS & SETTERS
+        public string NomeCarteira { get => nomeCarteira; set => nomeCarteira = value; }
+        public float Buget { get => buget; set => buget = value; }
+        public static int Tipo { get => tipo; set => tipo = value; }
+        internal Salario[] Sarios { get => sarios; set => sarios = value; }
+        internal Gasto[] Gastos { get => gastos; set => gastos = value; }
+        internal Renda[] Rendas { get => rendas; set => rendas = value; }
+
+        //Metodos
+        public bool addRenda(Renda r)
         {
             throw new NotImplementedException();
         }
 
-        public void addRenda()
+        public bool addGasto(Gasto g)
         {
             throw new NotImplementedException();
         }
 
-        public void addSalario()
+        public bool addSalario(Salario s)
         {
             throw new NotImplementedException();
         }
 
-        public void escreverGasto()
+        public bool escreverGasto()
         {
             throw new NotImplementedException();
         }
 
-        public void escreverRenda()
+        public bool lerGasto()
         {
             throw new NotImplementedException();
         }
 
-        public void expandir(object[] dado)
+        public bool escreverRenda()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool lerRenda()
         {
             throw new NotImplementedException();
         }
@@ -56,29 +78,6 @@ namespace Ada
         }
 
         public bool IsFull(object[] dado)
-        {
-            int size = 0;
-            //Somando a quantidade de casas do array oculpadas
-            for (int i = 0; i < dado.Length; i++)
-            {
-                if (dado[i] != null)
-                {
-                    size++;
-                }
-            }
-            if (dado.Length == size)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public void lerGasto()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void lerRenda()
         {
             throw new NotImplementedException();
         }

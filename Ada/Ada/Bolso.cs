@@ -6,20 +6,21 @@ namespace Ada
 {
     interface Bolso
     {
-
+        //TODO: Um metodo interno que gera o RENDA e retorna um objeto RENDA, OBS: O metodo deve ser entrado como parametro
         public bool addRenda(Renda r);
-
+        //TODO: Um metodo interno que gera o GASTO e retorna um objeto GASTO, OBS: O metodo deve ser entrado como parametro
         public bool addGasto(Gasto g);
 
+        //TODO: Um metodo interno que gera o SALARIO e retorna um objeto SALARIO, OBS: O metodo deve ser entrado como parametro
         public bool addSalario(Salario s);
 
-        public void escreverGasto();
+        public bool escreverGasto();
 
-        public void lerGasto();
+        public bool lerGasto();
 
-        public void escreverRenda();
+        public bool escreverRenda();
 
-        public void lerRenda();
+        public bool lerRenda();
 
         public void expandirGasto();
 

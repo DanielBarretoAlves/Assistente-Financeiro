@@ -4,22 +4,27 @@ using System.Text;
 
 namespace Ada
 {
-    public abstract class Produto
+    class Produto
     {
-
         private int valor;
         private int tipo;
-
-        public virtual void calcJuros() { }
-
-        protected Produto(int valor, int tipo)
+        private string nome;
+  
+        //Construtor
+        public Produto(int valor, int tipo, string nome)
         {
             this.valor = valor;
+            //TIP: TIPO = X é o numero de meses em que o valor se repete, Se Tipo for igual a 1 o produto não se repete
             this.tipo = tipo;
+            this.nome = nome;
         }
 
+        //Getters & Setters
+        public int Valor { get => valor; set => valor = value; }
+        public int Tipo { get => tipo; set => tipo = value; }
+        public string Nome { get => nome; set => nome = value; }
 
+        //Metodos
+        public virtual void calcJuros() { }
     }
-
-
 }

@@ -6,21 +6,31 @@ namespace Ada
 {
     class CarteiraPessoal : Bolso
     {
-        private float budget;
+        private string nomeCarteira;
+        private float buget;
+        private static int tipo = 1;
+        private Salario[] sarios;
         private Gasto[] gastos;
         private Renda[] rendas;
-        private Salario[] salarios;
-        private string nome;
-        private static int tipo = 1;
 
-        public CarteiraPessoal()
+        
+        //Construtor
+        public CarteiraPessoal(string nomeCarteira, float buget, Salario[] sarios, Gasto[] gastos, Renda[] rendas)
         {
-            gastos = new Gasto[5];
+            this.nomeCarteira = nomeCarteira;
+            this.buget = buget;
+            this.sarios = sarios;
+            this.gastos = gastos;
+            this.rendas = rendas;
         }
 
-        public float Budget { get => budget; set => budget = value; }
-        public Gasto[] Gastos { get => gastos; set => gastos = value; }
-
+        //GETTS & SETTERS
+        public string NomeCarteira { get => nomeCarteira; set => nomeCarteira = value; }
+        public float Buget { get => buget; set => buget = value; }
+        public static int Tipo { get => tipo; set => tipo = value; }
+        internal Salario[] Sarios { get => sarios; set => sarios = value; }
+        internal Gasto[] Gastos { get => gastos; set => gastos = value; }
+        internal Renda[] Rendas { get => rendas; set => rendas = value; }
 
         public bool addRenda(Renda r)
         {
@@ -29,139 +39,47 @@ namespace Ada
 
         public bool addGasto(Gasto g)
         {
-
-            if (IsFull(gastos) == false) {
-                for (int i = 0; i < gastos.Length; i++)
-                {
-                    gastos[i] = g;
-
-                }              
-            } else if(IsFull(gastos) == true) {
-
-                expandirGasto();
-                addGasto(g);
-            }
-            return true;
-        }
-
-        public void setarGastos() {
-
-            int importancia, incremental, valor, tipo;
-            string categoria;
-            Console.WriteLine("insira uma importancia de 1 a 5");
-            importancia = int.Parse(Console.ReadLine());
-            Console.WriteLine("insira o incremental");
-            incremental = int.Parse(Console.ReadLine());
-            Console.WriteLine("insira o valor");
-            valor = int.Parse(Console.ReadLine());
-            Console.WriteLine("insira um tipo");
-            tipo = int.Parse(Console.ReadLine());
-            Console.WriteLine("insira uma categoria");
-            categoria = Console.ReadLine();
-
-            Gasto g = new Gasto(categoria, importancia, incremental, valor, tipo);
-
-        }
-
-        public void escreverGasto()
-        {
             throw new NotImplementedException();
-        }
-
-        public void lerGasto()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void escreverRenda()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void lerRenda()
-        {
-            throw new NotImplementedException();
-        }
-        //AQUI
-        public void expandirGasto()
-        {
-            Gasto[] reserva = new Gasto[this.gastos.Length * 2];
-            if(IsFull(gastos))
-            {
-                for(int i = 0; i < gastos.Length; i++)
-                {
-                    reserva[i] = gastos[i];
-                }
-                gastos = reserva;
-            }
-            
-        }
-
-        public void expandirRenda()
-        {
-            Renda[] reserva = new Renda[this.gastos.Length * 2];
-            if(IsFull(rendas))
-            {
-                for(int i = 0; i < rendas.Length; i++)
-                {
-                    reserva[i] = rendas[i];
-                }
-                rendas = reserva;
-            }
-        
-        }
-
-        public void expandirSalarios()
-        {
-            Salario[] reserva = new Salario[this.salarios.Length * 2];
-            if (IsFull(rendas))
-            {
-                for (int i = 0; i < salarios.Length; i++)
-                {
-                    reserva[i] = salarios[i];
-                }
-                salarios = reserva;
-            }
-
-        }
-        public bool  IsFull(Object[] dado)
-        {
-            int size = 0;
-            //Somando a quantidade de casas do array oculpadas
-            for (int i = 0; i < dado.Length; i++)
-            {
-                if (dado[i] != null)
-                {
-                    size++;
-                }
-            }
-            if(dado.Length == size)
-            {
-                return true;
-            }
-            return false;
         }
 
         public bool addSalario(Salario s)
         {
-            if (IsFull(salarios))
-            {
-                expandirSalarios();
-
-
-            }
-            //TODO: Expandir Salarios
-
-            for (int i = 0; i < salarios.Length; i++)
-            {
-                if (salarios[i] == null)
-                {
-                    salarios[i] = s;
-                    return true;
-                }
-            }
-            return false;
+            throw new NotImplementedException();
         }
 
-    }   
+        public bool escreverGasto()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool lerGasto()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool escreverRenda()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool lerRenda()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void expandirGasto()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void expandirRenda()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsFull(object[] dado)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

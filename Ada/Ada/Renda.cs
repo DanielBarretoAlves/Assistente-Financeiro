@@ -6,12 +6,15 @@ namespace Ada
 {
     class Renda : Produto
     {
+        private int mes;
 
-        float incremental;
-
-        public Renda(float incremental, int valor, int tipo) : base(int valor, int tipo)
+        //Contrutor
+        public Renda(int mes, int valor, int tipo, string nome) : base(valor, tipo, nome)
         {
-            this.incremental = incremental;
+            this.mes = mes;
         }
+
+        //GET & SET
+        public int Mes { get => mes; set => mes = value; }
     }
 }

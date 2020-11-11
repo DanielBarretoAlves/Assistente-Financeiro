@@ -6,10 +6,7 @@ namespace Ada
     {
         static void Main(string[] args)
         {
-            Bolso c = new CarteiraPessoal();
-            c.expandirGasto();
-
-
+            Console.WriteLine("Hello World!");
         }
     }
 }
