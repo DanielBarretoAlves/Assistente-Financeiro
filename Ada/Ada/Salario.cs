@@ -29,6 +29,24 @@ namespace Ada
             
         }
 
-        public void calcComissão() { }
+        public void calcComissão(float porcentagem, float valorTotal, Object cart) {
+
+            CarteiraPessoal carteira1 = new CarteiraPessoal();
+            CarteiraProfissional carteira2 = new CarteiraProfissional();
+            float valorFinal = 0;
+
+
+            if (cart == carteira1)
+            {
+                valorFinal = valorTotal * porcentagem;
+                carteira1.Budget = carteira1.Budget = valorFinal;
+            }
+            else
+            {
+                valorFinal = valorTotal * porcentagem;
+                carteira2.Budget = carteira2.Budget = valorFinal;
+            }
+
+        }
     }
 }
