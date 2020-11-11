@@ -14,7 +14,7 @@
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Comece por aqui
 
 Como Iniciar...
 
