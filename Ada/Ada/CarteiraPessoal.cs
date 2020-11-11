@@ -67,6 +67,16 @@ namespace Ada
             throw new NotImplementedException();
         }
 
+        public bool escreverSalario()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool lerSalario()
+        {
+            throw new NotImplementedException();
+        }
+
         public void expandirGasto()
         {
             throw new NotImplementedException();

@@ -13,14 +13,21 @@ namespace Ada
 
         //TODO: Um metodo interno que gera o SALARIO e retorna um objeto SALARIO, OBS: O metodo deve ser entrado como parametro
         public bool addSalario(Salario s);
-
+        
+        //TODO: Escrever em um arquivo todas as informações necessarias para instanciar o construtor da classe GASTO
         public bool escreverGasto();
 
         public bool lerGasto();
 
+        //TODO: Escrever em um arquivo as informações necessarias para instanciar o construtor da classe RENDA
         public bool escreverRenda();
 
         public bool lerRenda();
+
+        //TODO: Escrever em um arquivo as informações necessarias para instanciar o construtor da classe RENDA
+        public bool escreverSalario();
+
+        public bool lerSalario();
 
         public void expandirGasto();
 
