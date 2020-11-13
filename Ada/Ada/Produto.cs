@@ -6,12 +6,12 @@ namespace Ada
 {
     class Produto
     {
-        private int valor;
+        private flaot valor;
         private int tipo;
         private string nome;
   
         //Construtor
-        public Produto(int valor, int tipo, string nome)
+        public Produto(float valor, int tipo, string nome)
         {
             this.valor = valor;
             //TIP: TIPO = X é o numero de meses em que o valor se repete, Se Tipo for igual a 1 o produto não se repete
@@ -20,7 +20,7 @@ namespace Ada
         }
 
         //Getters & Setters
-        public int Valor { get => valor; set => valor = value; }
+        public float Valor { get => valor; set => valor = value; }
         public int Tipo { get => tipo; set => tipo = value; }
         public string Nome { get => nome; set => nome = value; }
 
