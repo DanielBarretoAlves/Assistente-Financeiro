@@ -41,7 +41,23 @@ namespace Ada
 
         public bool addGasto(Gasto g)
         {
-            throw new NotImplementedException();
+            if (IsFull(gastos))
+            {
+                expandirGasto();
+
+
+            }
+            //TODO: Expandir Salarios
+
+            for (int i = 0; i < gastos.Length; i++)
+            {
+                if (gastos[i] == null)
+                {
+                    gastos[i] = g;
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool addSalario(Salario s)
