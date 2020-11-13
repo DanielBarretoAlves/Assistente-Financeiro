@@ -51,16 +51,12 @@ namespace Ada
 
         public bool escreverGasto()
         {
-            Gasto g = new Gasto("teste", 2, 7, 200, 1, "PSP");
-            var json_serializado = JsonConvert.SerializeObject(g);
-            using (System.IO.StreamWriter file =
-            new System.IO.StreamWriter(@"C:\Users\danie\Source\Repos\DanielBarretoAlves\Assistente-Financeiro\Ada\Ada\planilhaGastos.json", true))
-            {
-                file.WriteLine(json_serializado);
-            }
+            var json_serializado = JsonConvert.SerializeObject(gastos);
+            string createText = "Hello and Welcome" + Environment.NewLine;
+            File.WriteAllText(@"Gastos"+nomeCarteira+".json", json_serializado);
+            string t = File.ReadAllText(@"Gastos.json");
+
             return true;
-            
-            //TODO: Criar Arquivo
         }
 
         public bool lerGasto()
