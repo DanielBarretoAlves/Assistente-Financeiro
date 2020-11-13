@@ -18,13 +18,32 @@ namespace Ada
             //TODO: Code..
         }
 
-        public void addHoraExtra(float valHora, float numHoras)
+        public void addHoraExtra(float valHora, float numHoras, Object carteira)
         {
-            //TODO: Code..
+            CarteiraPessoal carteirapessoal = new CarteiraPessoal();
+            CarteiraProfissional carteiraprofissional = new CarteiraProfissional()
+            
+            if(carteira == carteirapessoal){
+                float total = valHora * numHoras;
+                Valor += total; 
+            }else if (carteira == carteiraprofissional){
+                float total = valHora * numHoras;
+                Valor += total; 
+            }
+
         }
-        public void calcComissao()
+         public void calcComissao(float porcentagem, float valorTotal, Object carteira)
         {
-            //TODO: Code..
+            CarteiraPessoal carteirapessoal = new CarteiraPessoal();
+            CarteiraProfissional carteiraprofissional = new CarteiraProfissional()
+            
+            if(carteira == carteirapessoal){
+                float total = valorTotal * porcentagem;
+                Valor += total; 
+            }else if (carteira == carteiraprofissional){
+                float total = valorTotal * porcentagem;
+                Valor += total; 
+            }
         }
     }
 }
