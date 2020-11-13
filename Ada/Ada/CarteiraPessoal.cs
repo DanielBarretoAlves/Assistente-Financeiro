@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Ada
@@ -49,7 +51,16 @@ namespace Ada
 
         public bool escreverGasto()
         {
-            throw new NotImplementedException();
+            Gasto g = new Gasto("teste", 2, 7, 200, 1, "PSP");
+            var json_serializado = JsonConvert.SerializeObject(g);
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@"C:\Users\danie\Source\Repos\DanielBarretoAlves\Assistente-Financeiro\Ada\Ada\planilhaGastos.json", true))
+            {
+                file.WriteLine(json_serializado);
+            }
+            return true;
+            
+            //TODO: Criar Arquivo
         }
 
         public bool lerGasto()
