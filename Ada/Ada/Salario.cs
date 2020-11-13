@@ -7,7 +7,7 @@ namespace Ada
     class Salario : Produto
     {
         //Contrutor
-        public Salario(int valor, int tipo, string nome) : base(valor, tipo, nome)
+        public Salario(float valor, int tipo, string nome) : base(valor, tipo, nome)
         {
         }
 
