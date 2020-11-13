@@ -90,7 +90,20 @@ namespace Ada
 
         public bool IsFull(object[] dado)
         {
-            throw new NotImplementedException();
+            int size = 0;
+            //Somando a quantidade de casas do array oculpadas
+            for (int i = 0; i < dado.Length; i++)
+            {
+                if (dado[i] != null)
+                {
+                    size++;
+                }
+            }
+            if(dado.Length == size)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
