@@ -20,30 +20,30 @@ namespace Ada
 
         public void addHoraExtra(float valHora, float numHoras, Object carteira)
         {
-            CarteiraPessoal carteirapessoal = new CarteiraPessoal();
-            CarteiraProfissional carteiraprofissional = new CarteiraProfissional()
+            //CarteiraPessoal carteirapessoal = new CarteiraPessoal();
+            //CarteiraProfissional carteiraprofissional = new CarteiraProfissional();
             
-            if(carteira == carteirapessoal){
-                float total = valHora * numHoras;
-                Valor += total; 
-            }else if (carteira == carteiraprofissional){
-                float total = valHora * numHoras;
-                Valor += total; 
-            }
+            //if(carteira == carteirapessoal){
+            //    float total = valHora * numHoras;
+            //    Valor += total; 
+            //}else if (carteira == carteiraprofissional){
+            //    float total = valHora * numHoras;
+            //    Valor += total; 
+            //}
 
         }
          public void calcComissao(float porcentagem, float valorTotal, Object carteira)
         {
-            CarteiraPessoal carteirapessoal = new CarteiraPessoal();
-            CarteiraProfissional carteiraprofissional = new CarteiraProfissional()
+            //CarteiraPessoal carteirapessoal = new CarteiraPessoal();
+            //CarteiraProfissional carteiraprofissional = new CarteiraProfissional()
             
-            if(carteira == carteirapessoal){
-                float total = valorTotal * porcentagem;
-                Valor += total; 
-            }else if (carteira == carteiraprofissional){
-                float total = valorTotal * porcentagem;
-                Valor += total; 
-            }
+            //if(carteira == carteirapessoal){
+            //    float total = valorTotal * porcentagem;
+            //    Valor += total; 
+            //}else if (carteira == carteiraprofissional){
+            //    float total = valorTotal * porcentagem;
+            //    Valor += total; 
+            //}
         }
     }
 }

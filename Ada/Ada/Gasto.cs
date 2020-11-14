@@ -10,7 +10,7 @@ namespace Ada
         private int importancia;
         private int mes;
 
-
+        //Construtor
         public Gasto(string categoria, int importancia, int mes, int valor, int tipo, string nome)
             : base(valor, tipo, nome)
         {
@@ -20,7 +20,12 @@ namespace Ada
 
         }
 
-        //Construtor
+        //Getts E Setters
+        public string Categoria { get => categoria; set => categoria = value; }
+        public int Importancia { get => importancia; set => importancia = value; }
+        public int Mes { get => mes; set => mes = value; }
+
+        
     }
 }
 //Vai ter que ler um txt das informações

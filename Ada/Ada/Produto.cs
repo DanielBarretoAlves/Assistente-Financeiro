@@ -6,7 +6,7 @@ namespace Ada
 {
     class Produto
     {
-        private flaot valor;
+        private float valor;
         private int tipo;
         private string nome;
   

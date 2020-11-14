@@ -68,7 +68,7 @@ namespace Ada
         public bool escreverGasto()
         {
             var json_serializado = JsonConvert.SerializeObject(gastos);
-            File.WriteAllText(@"Gastos"+nomeCarteira+".json", json_serializado);
+            File.WriteAllText(@"C:\Users\danie\Source\Repos\DanielBarretoAlves\Assistente-Financeiro\Ada\Ada\" + nomeCarteira+".json", json_serializado);
             return (File.Exists(@"Gastos"+nomeCarteira+".json"));
         }
 
