@@ -9,7 +9,7 @@ namespace Ada
         private int mes;
 
         //Contrutor
-        public Renda(int mes, int valor, int tipo, string nome) : base(valor, tipo, nome)
+        public Renda(int mes, float valor, int tipo, string nome) : base(valor, tipo, nome)
         {
             this.mes = mes;
         }
