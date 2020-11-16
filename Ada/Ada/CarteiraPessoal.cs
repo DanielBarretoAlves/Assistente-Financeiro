@@ -68,13 +68,20 @@ namespace Ada
         public bool escreverGasto()
         {
             var json_serializado = JsonConvert.SerializeObject(gastos);
-            File.WriteAllText(@"C:\Users\danie\Source\Repos\DanielBarretoAlves\Assistente-Financeiro\Ada\Ada\" + nomeCarteira+".json", json_serializado);
-            return (File.Exists(@"Gastos"+nomeCarteira+".json"));
+            File.WriteAllText(@"Arquivos/" + nomeCarteira + ".json", json_serializado);
+            return (File.Exists(@"Gastos" + nomeCarteira + ".json"));
         }
 
         public bool lerGasto()
         {
-            throw new NotImplementedException();
+            String st = "";
+            using (var sr = new StreamReader(@"Arquivos/Daniel.json"))
+            {
+                st += sr.ReadToEnd();
+
+            }
+            Gasto[] test = JsonConvert.DeserializeObject<Gasto[]>(st);
+            return true;
         }
 
         public bool escreverRenda()
