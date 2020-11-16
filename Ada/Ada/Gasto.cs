@@ -11,7 +11,7 @@ namespace Ada
         private int mes;
 
         //Construtor
-        public Gasto(string categoria, int importancia, int mes, int valor, int tipo, string nome)
+        public Gasto(string categoria, int importancia, int mes, float valor, int tipo, string nome)
             : base(valor, tipo, nome)
         {
             this.categoria = categoria;
