@@ -30,7 +30,7 @@ namespace Ada
         public string NomeCarteira { get => nomeCarteira; set => nomeCarteira = value; }
         public float Buget { get => buget; set => buget = value; }
         public static int Tipo { get => tipo; set => tipo = value; }
-        internal Salario[] Sarios { get => salarios; set => salarios = value; }
+        internal Salario[] Salarios { get => salarios; set => salarios = value; }
         internal Gasto[] Gastos { get => gastos; set => gastos = value; }
         internal Renda[] Rendas { get => rendas; set => rendas = value; }
 
