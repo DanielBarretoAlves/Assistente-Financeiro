@@ -14,6 +14,8 @@ namespace Ada
             Gasto PSP = new Gasto("Jogos", 3, 3, 250, 1, "PSP");
             c.addGasto(PSP);
             Console.WriteLine(c.escreverGasto());
+            Console.WriteLine(c.lerGasto());
+
         }
     }
 }

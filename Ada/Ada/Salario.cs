@@ -9,6 +9,10 @@ namespace Ada
         //Contrutor
         public Salario(float valor, int tipo, string nome) : base(valor, tipo, nome)
         {
+            int escolha = 0;
+            Console.WriteLine("Qual tipo de carteira? \n 1 - Carteira Pessoal \n 2 - Carteira Profissional");
+            escolha = int.Parse(Console.ReadLine());
+            if(escolha == 1) { } else if(escolha == 2) { } else { }
         }
 
         //Metodos
