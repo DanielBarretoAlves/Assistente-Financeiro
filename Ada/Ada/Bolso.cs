@@ -33,6 +33,8 @@ namespace Ada
 
         public void expandirRenda();
 
+        public void expandirSalario();
+
         public bool IsFull(Object[] dado);
 
     }
