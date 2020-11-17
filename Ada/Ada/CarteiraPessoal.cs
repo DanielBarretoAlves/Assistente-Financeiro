@@ -11,17 +11,17 @@ namespace Ada
         private string nomeCarteira;
         private float buget;
         private static int tipo = 1;
-        private Salario[] sarios;
+        private Salario[] salarios;
         private Gasto[] gastos;
         private Renda[] rendas;
 
         
         //Construtor
-        public CarteiraPessoal(string nomeCarteira, float buget, Salario[] sarios, Gasto[] gastos, Renda[] rendas)
+        public CarteiraPessoal(string nomeCarteira, float buget, Salario[] salarios, Gasto[] gastos, Renda[] rendas)
         {
             this.nomeCarteira = nomeCarteira;
             this.buget = buget;
-            this.sarios = sarios;
+            this.salarios = salarios;
             this.gastos = gastos;
             this.rendas = rendas;
         }
@@ -30,7 +30,7 @@ namespace Ada
         public string NomeCarteira { get => nomeCarteira; set => nomeCarteira = value; }
         public float Buget { get => buget; set => buget = value; }
         public static int Tipo { get => tipo; set => tipo = value; }
-        internal Salario[] Sarios { get => sarios; set => sarios = value; }
+        internal Salario[] Sarios { get => salarios; set => salarios = value; }
         internal Gasto[] Gastos { get => gastos; set => gastos = value; }
         internal Renda[] Rendas { get => rendas; set => rendas = value; }
 
@@ -62,7 +62,20 @@ namespace Ada
 
         public bool addSalario(Salario s)
         {
-            throw new NotImplementedException();
+            if (IsFull(salarios) == false) {
+                for (int i = 0; i < salarios.Length; i++)
+                {
+                    if (salarios[i] == null)
+                    {
+                        salarios[i] = g;
+                        return true;
+                    }
+                }
+            }// else if (IsFull(salarios) == true) {
+             //   expandirSalario();
+             //   addSalario(s);
+            //}
+            return false;
         }
 
         public bool escreverGasto()
