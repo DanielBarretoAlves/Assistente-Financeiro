@@ -9,10 +9,29 @@ namespace Ada
         //Contrutor
         public Salario(float valor, int tipo, string nome) : base(valor, tipo, nome)
         {
-           // int escolha = 0;
-           // Console.WriteLine("Qual tipo de carteira? \n 1 - Carteira Pessoal \n 2 - Carteira Profissional");
-           // escolha = int.Parse(Console.ReadLine());
-           // if(escolha == 1) { } else if(escolha == 2) { } else { }
+            // int escolha = 0;
+            // Console.WriteLine("Qual tipo de carteira? \n 1 - Carteira Pessoal \n 2 - Carteira Profissional");
+            // escolha = int.Parse(Console.ReadLine());
+            // if(escolha == 1) { } else if(escolha == 2) { } else { }
+            Console.WriteLine("Calcular hora extra? \n 1 - sim \n 2 - não");
+            int escolha = int.Parse(Console.ReadLine());
+            if (escolha == 1) {
+                Console.WriteLine("Quanto o valor a hora?");
+                float valorHora = float.Parse(Console.ReadLine());
+                Console.WriteLine("Quantas horas?");
+                float numeroHoras = float.Parse(Console.ReadLine());
+                addHoraExtra(valorHora, numeroHoras);
+            }
+            Console.WriteLine("Calcular comissão? \n 1 - sim \n 2 - não");
+            escolha = int.Parse(Console.ReadLine());
+            if (escolha == 1)
+            {
+                Console.WriteLine("Qual a porcentagem da comissão de 0 a 1? \n ex:0.5 que é igual a 50%");
+                float porcento = float.Parse(Console.ReadLine());
+                Console.WriteLine("Quantas horas?");
+                float valorEmCima = float.Parse(Console.ReadLine());
+                calcComissao(porcento, valorEmCima);
+            }
 
         }
 
@@ -28,18 +47,10 @@ namespace Ada
                 float total = valHora * numHoras;
                 Valor += total; 
         }
-         public void calcComissao(float porcentagem, float valorTotal, Object carteira)
+         public void calcComissao(float porcentagem, float valorTotal)
         {
-            //CarteiraPessoal carteirapessoal = new CarteiraPessoal();
-            //CarteiraProfissional carteiraprofissional = new CarteiraProfissional()
-            
-            //if(carteira == carteirapessoal){
-            //    float total = valorTotal * porcentagem;
-            //    Valor += total; 
-            //}else if (carteira == carteiraprofissional){
-            //    float total = valorTotal * porcentagem;
-            //    Valor += total; 
-            //}
+                float total = valorTotal * porcentagem;
+                Valor += total; 
         }
     }
 }
