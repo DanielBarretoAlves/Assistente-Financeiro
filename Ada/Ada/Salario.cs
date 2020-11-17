@@ -28,7 +28,7 @@ namespace Ada
             {
                 Console.WriteLine("Qual a porcentagem da comissão de 0 a 1? \n ex:0.5 que é igual a 50%");
                 float porcento = float.Parse(Console.ReadLine());
-                Console.WriteLine("Quantas horas?");
+                Console.WriteLine("Qual o valor total em que a comissão será aplicada?");
                 float valorEmCima = float.Parse(Console.ReadLine());
                 calcComissao(porcento, valorEmCima);
             }
