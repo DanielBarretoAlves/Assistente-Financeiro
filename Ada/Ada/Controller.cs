@@ -202,7 +202,15 @@ namespace Ada
             Console.WriteLine("Qual o mes desse gasto, obs: de 1 a 12");
             int mes = int.Parse(Console.ReadLine());
             mes--;
-            Gasto g = new Gasto("fsad", 1, 2, 200, 1, "sdfsdf");
+            Console.WriteLine("Fala ai Gastou quanto nisso");
+            Console.WriteLine("Valor:");
+            float valor = float.Parse(Console.ReadLine());
+            Console.WriteLine("Fala em quantos meses esse gasto vai se repetirm, obs: 1 Para não repetir");
+            int tipo = int.Parse(Console.ReadLine());
+            Console.WriteLine("Fala ai no que vc gastou?");
+            Console.WriteLine("Nome: ");
+            string nome = Console.ReadLine();
+            Gasto g = new Gasto(categoria, imp, mes, valor, tipo, nome);
             return g;
         }
         private void escreverNomesPE()
@@ -258,7 +266,7 @@ namespace Ada
                     case 0:
                         break;
                     case 1:
-                        // p.addGasto();
+                        p.addGasto(addGasto());
                         break;
                     default:
                         break;
