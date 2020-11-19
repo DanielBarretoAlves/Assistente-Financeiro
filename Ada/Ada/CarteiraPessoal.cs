@@ -195,6 +195,16 @@ namespace Ada
         }
 
         public void expandirSalario(){
+        
+            Salario[] reserva = new Salario[this.salarios.Length * 2];
+            if(IsFull(salarios))
+            {
+                for(int i = 0; i < gastos.Length; i++)
+                {
+                    reserva[i] = salarios[i];
+                }
+                salarios = reserva;
+            }
 
         }
         
