@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.Serialization.Json;
+using Newtonsoft.Json;
 
 namespace Ada
 {
@@ -6,16 +9,24 @@ namespace Ada
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Salario[] s = new Salario[2];
-            Gasto[] g = new Gasto[5];
-            Renda[] r = new Renda[3];
-            CarteiraPessoal c = new CarteiraPessoal("Pedro", 3500, s, g, r);
-            Gasto PSP = new Gasto("Jogos", 3, 3, 250, 1, "PSP");
-            c.addGasto(PSP);
-            Console.WriteLine(c.escreverGasto());
-            Console.WriteLine(c.lerGasto());
+            // String[] a = new string[12];
+            // a[0] = "Educação";
+            // a[1] = "Saude";
+            // a[2] = "Lazer";
+            // a[3] = "Casa";
+            // a[4] = "Contas";
+            // a[5] = "Pets";
+            // a[6] = "Transporte";
+            // a[7] = "Viagem";
+            // a[8] = "Crianças";
+            // a[9] = "Diario";
+            // a[10] = "Utilidade";
+            // a[11] = "Outros";
+            // var json_serializado = JsonConvert.SerializeObject(a);
+            // File.WriteAllText(@"Arquivos/Categorias.json", json_serializado);
 
+            // Controller ada = new Controller();
+            // ada.newCarteira();
         }
     }
 }

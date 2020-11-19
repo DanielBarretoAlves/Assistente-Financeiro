@@ -37,5 +37,7 @@ namespace Ada
 
         public bool IsFull(Object[] dado);
 
+        
+
     }
 }

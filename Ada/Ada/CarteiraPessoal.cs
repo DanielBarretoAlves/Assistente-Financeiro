@@ -24,6 +24,7 @@ namespace Ada
             this.salarios = salarios;
             this.gastos = gastos;
             this.rendas = rendas;
+            // escreverCarteria();
         }
 
         //GETTS & SETTERS
@@ -159,6 +160,14 @@ namespace Ada
             return true;
         }
 
+        // public bool escreverCarteria(){
+        //     var json_serializado = JsonConvert.SerializeObject(nomeCarteira);
+        //     //  using (StreamWriter sw = File.AppendText("Arquivo/Carteiras.json")){
+        //     //      sw.WriteLine(json_serializado);
+        //     //  }
+        //     File.WriteAllText(@"Arquivos/" + "Carteiras.json", json_serializado);
+        //     return true;
+        // }
         public void expandirGasto()
         {
             throw new NotImplementedException();
@@ -191,5 +200,7 @@ namespace Ada
             }
             return false;
         }
+
+        
     }
 }
