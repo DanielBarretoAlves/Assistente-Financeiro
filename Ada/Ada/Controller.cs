@@ -213,6 +213,19 @@ namespace Ada
             Gasto g = new Gasto(categoria, imp, mes, valor, tipo, nome);
             return g;
         }
+        
+        private Renda addRenda(){
+            Console.WriteLine("Fala o numero do mes");
+            int mes = int.Parse(Console.ReadLine());
+            Console.WriteLine("Fala ai quanto tu ganhou");
+            float valor = float.Parse(Console.ReadLine());
+            Console.WriteLine("Me fala quantos meses tu vai receber, obs: 1 para não repetir");
+            int tipo = int.Parse(Console.ReadLine());
+            Console.WriteLine("Agora um nome:");
+            string nome = Console.ReadLine();
+            Renda r = new Renda(mes, valor, tipo, nome);
+            return r;
+        }
         private void escreverNomesPE()
         {
             var json_serializado = JsonConvert.SerializeObject(cp);
