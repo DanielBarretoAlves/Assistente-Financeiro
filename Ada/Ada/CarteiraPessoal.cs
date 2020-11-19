@@ -170,7 +170,15 @@ namespace Ada
         // }
         public void expandirGasto()
         {
-            throw new NotImplementedException();
+            Gasto[] reserva = new Gasto[this.gastos.Length * 2];
+            if(IsFull(gastos))
+            {
+                for(int i = 0; i < gastos.Length; i++)
+                {
+                    reserva[i] = gastos[i];
+                }
+                gastos = reserva;
+            }
         }
 
         public void expandirRenda()
