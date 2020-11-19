@@ -183,7 +183,15 @@ namespace Ada
 
         public void expandirRenda()
         {
-            throw new NotImplementedException();
+            Renda[] reserva = new Renda[this.rendas.Length * 2];
+            if(IsFull(rendas))
+            {
+                for(int i = 0; i < gastos.Length; i++)
+                {
+                    reserva[i] = rendas[i];
+                }
+                rendas = reserva;
+            }
         }
 
         public void expandirSalario(){
