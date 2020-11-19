@@ -226,6 +226,16 @@ namespace Ada
             Renda r = new Renda(mes, valor, tipo, nome);
             return r;
         }
+        private Salario addSalario(){
+            Console.WriteLine("Quanto tu vai ganhar?");
+            float valor = float.Parse(Console.ReadLine());
+            Console.WriteLine("Me fala quantos meses tu vai receber, obs: 1 para não repetir");
+            int tipo = int.Parse(Console.ReadLine());
+            Console.WriteLine("Agora um nome:");
+            string nome = Console.ReadLine();
+            Salario s = new Salario(valor, tipo, nome);
+            return s;
+        }
         private void escreverNomesPE()
         {
             var json_serializado = JsonConvert.SerializeObject(cp);
