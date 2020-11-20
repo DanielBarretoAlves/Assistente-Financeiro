@@ -19,6 +19,8 @@ namespace Ada
             nomesCarteiras = new string[50];
             cp = new CarteiraPessoal[20];
             ct = new CarteiraProfissional[20];
+            // clearPE();
+            // Console.WriteLine("Fim");
             loadCarteirasPE();
             loadCarteirasPR();
 
@@ -49,8 +51,11 @@ namespace Ada
                 }
                 else
                 {
-                    gerarPE(nome);
+
+                    menuPE(gerarPE(nome));
                     escreverNomesPE();
+
+
 
                 }
             }
@@ -58,7 +63,31 @@ namespace Ada
 
         }
 
-        private bool gerarPE(string nome)
+        private void clearPE()
+        {
+            for (var i = 0; i < cp.Length; i++)
+            {
+                cp[i] = null;
+            }
+            escreverNomesPE();
+        }
+        private CarteiraPessoal selectPE()
+        {
+            loadCarteirasPE();
+            int qtt = 0;
+            for (int i = 0; i < cp.Length; i++)
+            {
+                if (cp[i] != null)
+                {
+                    qtt++;
+                    Console.WriteLine("Nome: " + cp[i].NomeCarteira);
+                }
+            }
+            qtt = int.Parse(Console.ReadLine());
+            return cp[qtt];
+        }
+
+        private CarteiraPessoal gerarPE(string nome)
         {
             Gasto[] g = new Gasto[50];
             Renda[] r = new Renda[10];
@@ -66,8 +95,9 @@ namespace Ada
             Console.WriteLine("Valor:");
             float valor = float.Parse(Console.ReadLine());
             CarteiraPessoal c = new CarteiraPessoal(nome, valor, gerarSalario(), g, r);
+            Console.WriteLine("Gastos: " + c.Gastos.Length);
             addPE(c);
-            return true;
+            return c;
         }
         private bool gerarPR(string nome)
         {
@@ -195,8 +225,7 @@ namespace Ada
         private Gasto addGasto()
         {
             // Gasto.Gasto(string categoria, int importancia, int mes, float valor, int tipo, string nome)
-            Console.WriteLine("Fala a Categoria");
-            string categoria = Console.ReadLine();
+
             Console.WriteLine("De 1 a 5 sendo 5 o mais importante fala aí qual o nivel de importancia dessa despesa");
             int imp = int.Parse(Console.ReadLine());
             Console.WriteLine("Qual o mes desse gasto, obs: de 1 a 12");
@@ -210,11 +239,13 @@ namespace Ada
             Console.WriteLine("Fala ai no que vc gastou?");
             Console.WriteLine("Nome: ");
             string nome = Console.ReadLine();
-            Gasto g = new Gasto(categoria, imp, mes, valor, tipo, nome);
+            Gasto g = new Gasto(selectCategoria(), imp, mes, valor, tipo, nome);
+            escreverNomesPE();
             return g;
         }
-        
-        private Renda addRenda(){
+
+        private Renda addRenda()
+        {
             Console.WriteLine("Fala o numero do mes");
             int mes = int.Parse(Console.ReadLine());
             Console.WriteLine("Fala ai quanto tu ganhou");
@@ -226,7 +257,8 @@ namespace Ada
             Renda r = new Renda(mes, valor, tipo, nome);
             return r;
         }
-        private Salario addSalario(){
+        private Salario addSalario()
+        {
             Console.WriteLine("Quanto tu vai ganhar?");
             float valor = float.Parse(Console.ReadLine());
             Console.WriteLine("Me fala quantos meses tu vai receber, obs: 1 para não repetir");
@@ -256,7 +288,32 @@ namespace Ada
                 st += sr.ReadToEnd();
 
             }
+            Console.WriteLine(st);
             cp = JsonConvert.DeserializeObject<CarteiraPessoal[]>(st);
+            // for (int i = 0; i < cp.Length; i++)
+            // {
+            //     if (cp[i] != null)
+            //     {
+            //         setGastosPE(cp[i]);
+            //     }
+            // }
+        }
+
+        private void setGastosPE(CarteiraPessoal p)
+        {
+            String st = "";
+            using (var sr = new StreamReader(@"Arquivos/gastos"+p.NomeCarteira+ ".json"))
+            {
+                st += sr.ReadToEnd();
+
+            }
+            Gasto[] newGastos = JsonConvert.DeserializeObject<Gasto[]>(st);
+            Console.WriteLine("Tamanho: "+newGastos.Length);
+            // for (int i = 0; i < newGastos.Length; i++)
+            // {
+                
+            // }
+            p.Gastos = newGastos;
         }
 
         private void loadCarteirasPR()
@@ -272,7 +329,9 @@ namespace Ada
 
         private void menuPE(CarteiraPessoal p)
         {
+
             float key = 1;
+            setGastosPE(p);
             Console.WriteLine("Entramos " + p.NomeCarteira);
             while (key != 0)
             {
@@ -286,12 +345,28 @@ namespace Ada
                 key = float.Parse(Console.ReadLine());
                 switch (key)
                 {
-                    case 0:
-                        break;
                     case 1:
                         p.addGasto(addGasto());
+                        p.escreverGasto();
+
+                        break;
+                    case 2:
+                        p.addRenda(addRenda());
+                        break;
+                    case 5:
+                        //Teste
+                        Console.WriteLine("Gastos: " + p.Gastos.Length);
+                        for (int i = 0; i < p.Gastos.Length; i++)
+                        {
+                         if (p.Gastos[i] != null)
+                         {
+                             Console.WriteLine("Nome: "+p.Gastos[i].Nome);
+                         }   
+                        }
+                        //Fim Testes
                         break;
                     default:
+                        // Console.WriteLine("Gasto Final: " + p.Gastos[0].Nome);
                         break;
                 }
 
@@ -299,6 +374,30 @@ namespace Ada
             }
         }
 
+
+        private Categoria[] callCategoria()
+        {
+            String st = "";
+            using (var sr = new StreamReader(@"Arquivos/Categorias.json"))
+            {
+                st += sr.ReadToEnd();
+
+            }
+            Categoria[] categorias = JsonConvert.DeserializeObject<Categoria[]>(st);
+            return categorias;
+        }
+
+
+        private string selectCategoria()
+        {
+            Console.WriteLine("Escolha a Categoria");
+            for (int i = 0; i < callCategoria().Length; i++)
+            {
+                Console.WriteLine(i + " - " + callCategoria()[i].Nome);
+            }
+            int cat = int.Parse(Console.ReadLine());
+            return callCategoria()[cat].Nome;
+        }
 
 
     }

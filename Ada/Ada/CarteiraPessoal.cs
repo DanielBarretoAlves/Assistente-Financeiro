@@ -24,6 +24,8 @@ namespace Ada
             this.salarios = salarios;
             this.gastos = gastos;
             this.rendas = rendas;
+            // Console.WriteLine("Num De Gastos" +gastos.Length);
+            // escreverGasto();
             // escreverCarteria();
         }
 
@@ -59,11 +61,10 @@ namespace Ada
 
         public bool addGasto(Gasto g)
         {
+            
             if (IsFull(gastos))
             {
                 expandirGasto();
-
-
             }
             //TODO: Expandir Salarios
 
@@ -72,9 +73,11 @@ namespace Ada
                 if (gastos[i] == null)
                 {
                     gastos[i] = g;
+                    // escreverGasto();
                     return true;
                 }
             }
+            // escreverGasto();
             return false;
         }
 
@@ -217,6 +220,7 @@ namespace Ada
             {
                 if (dado[i] != null)
                 {
+                    Console.WriteLine("Entrou");
                     size++;
                 }
             }
