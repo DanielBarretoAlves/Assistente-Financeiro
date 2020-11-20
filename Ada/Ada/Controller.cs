@@ -23,6 +23,7 @@ namespace Ada
             // Console.WriteLine("Fim");
             loadCarteirasPE();
             loadCarteirasPR();
+            menuPE(selectPE());
 
         }
 
@@ -97,6 +98,7 @@ namespace Ada
             CarteiraPessoal c = new CarteiraPessoal(nome, valor, gerarSalario(), g, r);
             Console.WriteLine("Gastos: " + c.Gastos.Length);
             addPE(c);
+            escreverNomesPE();
             return c;
         }
         private bool gerarPR(string nome)
@@ -302,16 +304,16 @@ namespace Ada
         private void setGastosPE(CarteiraPessoal p)
         {
             String st = "";
-            using (var sr = new StreamReader(@"Arquivos/gastos"+p.NomeCarteira+ ".json"))
+            using (var sr = new StreamReader(@"Arquivos/gastos" + p.NomeCarteira + ".json"))
             {
                 st += sr.ReadToEnd();
 
             }
             Gasto[] newGastos = JsonConvert.DeserializeObject<Gasto[]>(st);
-            Console.WriteLine("Tamanho: "+newGastos.Length);
+            // Console.WriteLine("Tamanho: "+newGastos.Length);
             // for (int i = 0; i < newGastos.Length; i++)
             // {
-                
+
             // }
             p.Gastos = newGastos;
         }
@@ -331,7 +333,15 @@ namespace Ada
         {
 
             float key = 1;
-            setGastosPE(p);
+            
+            if (File.Exists("Arquivos/gastos"+p.NomeCarteira+".json"))
+            {
+                setGastosPE(p);
+            }else{
+                p.escreverGasto();
+            }
+            // var json_serializado = JsonConvert.SerializeObject(p.Gastos);
+            // File.WriteAllText(@"Arquivos/CarteirasProfissionais.json", json_serializado);
             Console.WriteLine("Entramos " + p.NomeCarteira);
             while (key != 0)
             {
@@ -358,10 +368,10 @@ namespace Ada
                         Console.WriteLine("Gastos: " + p.Gastos.Length);
                         for (int i = 0; i < p.Gastos.Length; i++)
                         {
-                         if (p.Gastos[i] != null)
-                         {
-                             Console.WriteLine("Nome: "+p.Gastos[i].Nome);
-                         }   
+                            if (p.Gastos[i] != null)
+                            {
+                                Console.WriteLine("Nome: " + p.Gastos[i].Nome);
+                            }
                         }
                         //Fim Testes
                         break;
