@@ -81,7 +81,7 @@ namespace Ada
                 if (cp[i] != null)
                 {
                     qtt++;
-                    Console.WriteLine("Nome: " + cp[i].NomeCarteira);
+                    Console.WriteLine(i+ " - Nome: " + cp[i].NomeCarteira);
                 }
             }
             qtt = int.Parse(Console.ReadLine());
@@ -91,6 +91,7 @@ namespace Ada
         private CarteiraPessoal gerarPE(string nome)
         {
             Gasto[] g = new Gasto[50];
+            // Console.WriteLine("Teste"+g.Length);
             Renda[] r = new Renda[10];
             Console.WriteLine("Você já tem algum tustão no bolso, fala ai tem quanto?");
             Console.WriteLine("Valor:");
@@ -236,7 +237,7 @@ namespace Ada
             Console.WriteLine("Fala ai Gastou quanto nisso");
             Console.WriteLine("Valor:");
             float valor = float.Parse(Console.ReadLine());
-            Console.WriteLine("Fala em quantos meses esse gasto vai se repetirm, obs: 1 Para não repetir");
+            Console.WriteLine("Fala em quantos meses esse gasto vai se repetir, obs: 1 Para não repetir");
             int tipo = int.Parse(Console.ReadLine());
             Console.WriteLine("Fala ai no que vc gastou?");
             Console.WriteLine("Nome: ");
@@ -273,7 +274,7 @@ namespace Ada
         private void escreverNomesPE()
         {
             var json_serializado = JsonConvert.SerializeObject(cp);
-            File.WriteAllText(@"Arquivos/CarteirasPessoais.json", json_serializado);
+            File.WriteAllText(@"Arquivos\CarteirasPessoais.json", json_serializado);
         }
 
         private void escreverNomesPR()
@@ -290,15 +291,33 @@ namespace Ada
                 st += sr.ReadToEnd();
 
             }
-            Console.WriteLine(st);
             cp = JsonConvert.DeserializeObject<CarteiraPessoal[]>(st);
-            // for (int i = 0; i < cp.Length; i++)
-            // {
-            //     if (cp[i] != null)
-            //     {
-            //         setGastosPE(cp[i]);
-            //     }
-            // }
+
+            //TODO: Melhorar isso
+            for (int i = 0; i < cp.Length; i++)
+            {
+                if (cp[i] != null)
+                {
+
+                    if (cp[i].Gastos == null)
+                    {
+                        
+                        Gasto[] g = new Gasto[50];
+                        cp[0].Gastos = g;
+                    }
+                    if (cp[i].Rendas == null)
+                    {
+                        Renda[] r = new Renda[50];
+                        cp[0].Rendas = r;
+                    }
+                    if (cp[i].Salarios == null)
+                    {
+                        Salario[] s = new Salario[50];
+                        cp[0].Salarios = s;
+                    }
+                }
+            }
+
         }
 
         private void setGastosPE(CarteiraPessoal p)
@@ -333,11 +352,16 @@ namespace Ada
         {
 
             float key = 1;
-            
-            if (File.Exists("Arquivos/gastos"+p.NomeCarteira+".json"))
+            // p.escreverGasto();
+
+            if (File.Exists(@"Arquivos/gastos" + p.NomeCarteira + ".json"))
             {
                 setGastosPE(p);
-            }else{
+            }
+            else
+            {
+                Gasto[] g = new Gasto[50];
+                // Console.WriteLine("Test: "+p.Gastos.Length);
                 p.escreverGasto();
             }
             // var json_serializado = JsonConvert.SerializeObject(p.Gastos);
@@ -348,7 +372,7 @@ namespace Ada
                 Console.WriteLine("Como Posso te Ajudar:");
                 Console.WriteLine("0 - Sair");
                 Console.WriteLine("1 - Paguei ou vou pagar uma parada");
-                Console.WriteLine("2- Ganhei ou vou ganhar uma grana");
+                Console.WriteLine("2 - Ganhei ou vou ganhar uma grana");
                 Console.WriteLine("3 - Arrumei  outro trampo");
                 Console.WriteLine("4 - Vou ser Demitido \\O/");
                 Console.WriteLine("5 - Verificar por mes");
@@ -365,6 +389,7 @@ namespace Ada
                         break;
                     case 5:
                         //Teste
+
                         Console.WriteLine("Gastos: " + p.Gastos.Length);
                         for (int i = 0; i < p.Gastos.Length; i++)
                         {
