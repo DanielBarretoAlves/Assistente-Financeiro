@@ -25,7 +25,7 @@ namespace Ada
         private Renda[] rendas;
         private Mes[] agenda = new Mes[12];
 
-        
+
         //Construtor
         public CarteiraPessoal(string nomeCarteira, float buget, Salario[] salarios, Gasto[] gastos, Renda[] rendas)
         {
@@ -34,25 +34,13 @@ namespace Ada
             this.salarios = salarios;
             this.gastos = gastos;
             this.rendas = rendas;
-            
+
             //Se der ruim apaga Meses
+            //Set os Gastos de Cada Mes
 
-            for (int i = 0; i < agenda.Length; i++)
-            {
-                //TODO: Needs Work But Work just Fine :-)
-                Mes m = new Mes(i);
-                Gasto[] g = new Gasto[50];
-                m.Gastos = g;
-                agenda[i] = m;
-                
-                
-            }
-            Console.WriteLine("ENtrou");
-
-            escreverAgenda();
-
+            updateAgenda();
             // FIm------------------
-            
+
         }
 
         //GETTS & SETTERS
@@ -64,6 +52,24 @@ namespace Ada
         internal Renda[] Rendas { get => rendas; set => rendas = value; }
 
 
+
+        public void updateAgenda()
+        {
+            for (int i = 0; i < agenda.Length; i++)
+            {
+                //TODO: Needs Work But Work just Fine :-)
+                Mes m = new Mes(i);
+                Gasto[] g = new Gasto[50];
+                m.Gastos = g;
+                agenda[i] = m;
+                agenda[i].updateMaxGasto();
+
+
+            }
+            // Console.WriteLine("ENtrou");
+
+            escreverAgenda();
+        }
         public void loadAgenda()
         {
             //Agenda =  i /    i = 12
@@ -71,23 +77,33 @@ namespace Ada
             // gastos p/mes e joga dentro de cada mes masi bate no tipo
             // Um array chamo next q armazena só os proximos uma fila de gastos
             Mes[] tempo = new Mes[12];
-        
+
             for (int i = 0; i < agenda.Length; i++)
             {
                 tempo[i].Gastos = getGastoMes(i); // Add todos os Gastos por todos os Meses
-                
+
             }
 
         }
 
         public bool agendarGasto(Gasto g)
         {
-            
+
             int goal = g.Mes + g.Tipo;
             if (g.Tipo <= 1)
             {
+                Console.WriteLine("Valor do Gasto: " + g.Valor);
+                
                 goal = 0;
-                agenda[g.Mes].Gastos[agenda[g.Mes].GastoValidPOS()] = g;
+                Console.WriteLine("Vallid POS: " + agenda[g.Mes].GastoValidPOS());
+                agenda[g.Mes].Gastos[0] = g;
+                Console.WriteLine("Teste: " + agenda[g.Mes].Gastos[0].Valor);
+                agenda[g.Mes].updateMaxGasto();
+                escreverAgenda();
+                Console.WriteLine("Teste 2 : " + agenda[g.Mes].Gastos[0].Valor);
+                agenda[g.Mes].updateMaxGasto();
+                Console.WriteLine("Valor do Gasto na Agenda: "+ agenda[g.Mes].MaxGasto);
+                return true;
             }
 
             //Aqui é para recorencia
@@ -97,11 +113,12 @@ namespace Ada
                 agenda[g.Mes].Gastos[agenda[g.Mes].GastoValidPOS()] = g;
             }
             var json_serializado = JsonConvert.SerializeObject(agenda);
-            File.WriteAllText(@"Arquivos/" + "agenda"+nomeCarteira + ".json", json_serializado);
-            return (File.Exists(@"Arquivos/" + "agenda"+nomeCarteira + ".json"));
+            File.WriteAllText(@"Arquivos/" + "agenda" + nomeCarteira + ".json", json_serializado);
+            return (File.Exists(@"Arquivos/" + "agenda" + nomeCarteira + ".json"));
+            updateAgenda();
 
         }
-        private Gasto[]  getGastoMes(int m)
+        private Gasto[] getGastoMes(int m)
         {
             Gasto[] g = new Gasto[50];
             for (int i = 0; i < getGastosTamanho(); i++)
@@ -146,7 +163,7 @@ namespace Ada
         public bool addGasto(Gasto g)
         {
             expandirGasto();
-    
+
             for (int i = 0; i < gastos.Length; i++)
             {
                 if (gastos[i] == null)
@@ -180,14 +197,14 @@ namespace Ada
         public bool escreverGasto()
         {
             var json_serializado = JsonConvert.SerializeObject(gastos);
-            File.WriteAllText(@"Arquivos/" + "gastos"+nomeCarteira + ".json", json_serializado);
-            return (File.Exists(@"Arquivos/" + "gastos"+nomeCarteira + ".json"));
+            File.WriteAllText(@"Arquivos/" + "gastos" + nomeCarteira + ".json", json_serializado);
+            return (File.Exists(@"Arquivos/" + "gastos" + nomeCarteira + ".json"));
         }
 
         public bool lerGasto()
         {
             String st = "";
-            using (var sr = new StreamReader(@"Arquivos/" + "gastos"+nomeCarteira + ".json"))
+            using (var sr = new StreamReader(@"Arquivos/" + "gastos" + nomeCarteira + ".json"))
             {
                 st += sr.ReadToEnd();
 
@@ -200,20 +217,20 @@ namespace Ada
         public bool escreverAgenda()
         {
             var json_serializado = JsonConvert.SerializeObject(agenda);
-            File.WriteAllText(@"Arquivos/" + "agenda"+nomeCarteira + ".json", json_serializado);
-            return (File.Exists(@"Arquivos/" + "agenda"+nomeCarteira + ".json"));
+            File.WriteAllText(@"Arquivos/" + "agenda" + nomeCarteira + ".json", json_serializado);
+            return (File.Exists(@"Arquivos/" + "agenda" + nomeCarteira + ".json"));
         }
         public bool escreverRenda()
         {
             var json_serializado = JsonConvert.SerializeObject(rendas);
-            File.WriteAllText(@"Arquivos/" + "rendas"+nomeCarteira + ".json", json_serializado);
-            return (File.Exists(@"Arquivos/" + "rendas"+nomeCarteira + ".json"));
+            File.WriteAllText(@"Arquivos/" + "rendas" + nomeCarteira + ".json", json_serializado);
+            return (File.Exists(@"Arquivos/" + "rendas" + nomeCarteira + ".json"));
         }
 
         public bool lerRenda()
         {
             String st = "";
-            using (var sr = new StreamReader(@"Arquivos/" + "rendas"+nomeCarteira + ".json"))
+            using (var sr = new StreamReader(@"Arquivos/" + "rendas" + nomeCarteira + ".json"))
             {
                 st += sr.ReadToEnd();
 
@@ -226,14 +243,14 @@ namespace Ada
         public bool escreverSalario()
         {
             var json_serializado = JsonConvert.SerializeObject(salarios);
-            File.WriteAllText(@"Arquivos/" + "salarios"+nomeCarteira + ".json", json_serializado);
-            return (File.Exists(@"Arquivos/" + "salarios"+nomeCarteira + ".json"));
+            File.WriteAllText(@"Arquivos/" + "salarios" + nomeCarteira + ".json", json_serializado);
+            return (File.Exists(@"Arquivos/" + "salarios" + nomeCarteira + ".json"));
         }
 
         public bool lerSalario()
         {
             String st = "";
-            using (var sr = new StreamReader(@"Arquivos/" + "salarios"+nomeCarteira + ".json"))
+            using (var sr = new StreamReader(@"Arquivos/" + "salarios" + nomeCarteira + ".json"))
             {
                 st += sr.ReadToEnd();
 
@@ -254,23 +271,23 @@ namespace Ada
         public void expandirGasto()
         {
             Gasto[] reserva = new Gasto[this.gastos.Length * 2];
-            if(IsFull(gastos))
+            if (IsFull(gastos))
             {
-                for(int i = 0; i < gastos.Length; i++)
+                for (int i = 0; i < gastos.Length; i++)
                 {
                     reserva[i] = gastos[i];
                 }
                 gastos = reserva;
             }
-            
+
         }
 
         public void expandirRenda()
         {
             Renda[] reserva = new Renda[this.rendas.Length * 2];
-            if(IsFull(rendas))
+            if (IsFull(rendas))
             {
-                for(int i = 0; i < gastos.Length; i++)
+                for (int i = 0; i < gastos.Length; i++)
                 {
                     reserva[i] = rendas[i];
                 }
@@ -278,12 +295,13 @@ namespace Ada
             }
         }
 
-        public void expandirSalario(){
-        
+        public void expandirSalario()
+        {
+
             Salario[] reserva = new Salario[this.salarios.Length * 2];
-            if(IsFull(salarios))
+            if (IsFull(salarios))
             {
-                for(int i = 0; i < gastos.Length; i++)
+                for (int i = 0; i < gastos.Length; i++)
                 {
                     reserva[i] = salarios[i];
                 }
@@ -291,8 +309,8 @@ namespace Ada
             }
 
         }
-        
-        
+
+
         public bool IsFull(object[] dado)
         {
             int size = 0;
@@ -305,13 +323,13 @@ namespace Ada
                     size++;
                 }
             }
-            if(dado.Length == size)
+            if (dado.Length == size)
             {
                 return true;
             }
             return false;
         }
 
-        
+
     }
 }
