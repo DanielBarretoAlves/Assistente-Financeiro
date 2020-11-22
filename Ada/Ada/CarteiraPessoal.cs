@@ -4,6 +4,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
+//ERROR:  não está setando nada no array 
+//TODO: Settar o array e testar o metodo
+// Unhandled exception. System.NullReferenceException: Object reference not set to an instance of an object.
+//    at Ada.CarteiraPessoal.agendarGasto(Gasto g) in C:\Users\danie\Desktop\VSC\CarteiraPessoal.cs:line 81
+//    at Ada.CarteiraPessoal.addGasto(Gasto g) in C:\Users\danie\Desktop\VSC\CarteiraPessoal.cs:line 142
+//    at Ada.Controller.menuPE(CarteiraPessoal p) in C:\Users\danie\Desktop\VSC\Controller.cs:line 378
+//    at Ada.Controller..ctor() in C:\Users\danie\Desktop\VSC\Controller.cs:line 27
+//    at Ada.Program.Main(String[] args) in C:\Users\danie\Desktop\VSC\Program.cs:line 13
+// PS C:\Users\danie\Desktop\VSC> 
 namespace Ada
 {
     class CarteiraPessoal : Bolso
@@ -14,6 +23,7 @@ namespace Ada
         private Salario[] salarios;
         private Gasto[] gastos;
         private Renda[] rendas;
+        private Mes[] agenda = new Mes[12];
 
         
         //Construtor
@@ -24,9 +34,25 @@ namespace Ada
             this.salarios = salarios;
             this.gastos = gastos;
             this.rendas = rendas;
-            // Console.WriteLine("Num De Gastos" +gastos.Length);
-            // escreverGasto();
-            // escreverCarteria();
+            
+            //Se der ruim apaga Meses
+
+            for (int i = 0; i < agenda.Length; i++)
+            {
+                //TODO: Needs Work But Work just Fine :-)
+                Mes m = new Mes(i);
+                Gasto[] g = new Gasto[50];
+                m.Gastos = g;
+                agenda[i] = m;
+                
+                
+            }
+            Console.WriteLine("ENtrou");
+
+            escreverAgenda();
+
+            // FIm------------------
+            
         }
 
         //GETTS & SETTERS
@@ -37,22 +63,80 @@ namespace Ada
         internal Gasto[] Gastos { get => gastos; set => gastos = value; }
         internal Renda[] Rendas { get => rendas; set => rendas = value; }
 
+
+        public void loadAgenda()
+        {
+            //Agenda =  i /    i = 12
+            //AgendaTempo = z /  = z 12
+            // gastos p/mes e joga dentro de cada mes masi bate no tipo
+            // Um array chamo next q armazena só os proximos uma fila de gastos
+            Mes[] tempo = new Mes[12];
+        
+            for (int i = 0; i < agenda.Length; i++)
+            {
+                tempo[i].Gastos = getGastoMes(i); // Add todos os Gastos por todos os Meses
+                
+            }
+
+        }
+
+        public bool agendarGasto(Gasto g)
+        {
+            
+            int goal = g.Mes + g.Tipo;
+            if (g.Tipo <= 1)
+            {
+                goal = 0;
+                agenda[g.Mes].Gastos[agenda[g.Mes].GastoValidPOS()] = g;
+            }
+
+            //Aqui é para recorencia
+            for (int i = g.Mes; i < goal; i++)
+            {
+                Console.WriteLine(agenda[g.Mes].GastoValidPOS());
+                agenda[g.Mes].Gastos[agenda[g.Mes].GastoValidPOS()] = g;
+            }
+            var json_serializado = JsonConvert.SerializeObject(agenda);
+            File.WriteAllText(@"Arquivos/" + "agenda"+nomeCarteira + ".json", json_serializado);
+            return (File.Exists(@"Arquivos/" + "agenda"+nomeCarteira + ".json"));
+
+        }
+        private Gasto[]  getGastoMes(int m)
+        {
+            Gasto[] g = new Gasto[50];
+            for (int i = 0; i < getGastosTamanho(); i++)
+            {
+                if (gastos[i].Mes == m)
+                {
+                    g[i] = gastos[i];
+                }
+            }
+            return g;
+        }
+        private int getGastosTamanho()
+        {
+            int tamanho = 0;
+            for (int i = 0; i < gastos.Length; i++)
+            {
+                if (gastos[i] != null)
+                {
+                    tamanho++;
+                }
+            }
+            return tamanho;
+        }
+
+
         public bool addRenda(Renda r)
         {
-            if (IsFull(rendas))
-            {
-                //TODO: Implementar ExpandirRenda();
-                expandirRenda();
-
-
-            }
-            //TODO: Expandir Salarios
+            expandirRenda();
 
             for (int i = 0; i < rendas.Length; i++)
             {
                 if (rendas[i] == null)
                 {
                     rendas[i] = r;
+                    escreverRenda();
                     return true;
                 }
             }
@@ -61,42 +145,32 @@ namespace Ada
 
         public bool addGasto(Gasto g)
         {
-            
-            if (IsFull(gastos))
-            {
-                expandirGasto();
-            }
-            //TODO: Expandir Salarios
-
+            expandirGasto();
+    
             for (int i = 0; i < gastos.Length; i++)
             {
                 if (gastos[i] == null)
                 {
                     gastos[i] = g;
-                    // escreverGasto();
+                    //ADD na Agenda
+                    //Agenda get gasto pega o gasto g e põe ele em todos os meses que ele se encontra
+                    agendarGasto(g);
                     return true;
                 }
             }
-            // escreverGasto();
             return false;
         }
 
         public bool addSalario(Salario s)
         {
-            if (IsFull(salarios))
-            {
-                //TODO: Implementar ExpandirRenda();
-                expandirSalario();
-
-
-            }
-            //TODO: Expandir Salarios
+            expandirSalario();
 
             for (int i = 0; i < salarios.Length; i++)
             {
                 if (salarios[i] == null)
                 {
                     salarios[i] = s;
+                    escreverSalario();
                     return true;
                 }
             }
@@ -123,6 +197,12 @@ namespace Ada
             return true;
         }
 
+        public bool escreverAgenda()
+        {
+            var json_serializado = JsonConvert.SerializeObject(agenda);
+            File.WriteAllText(@"Arquivos/" + "agenda"+nomeCarteira + ".json", json_serializado);
+            return (File.Exists(@"Arquivos/" + "agenda"+nomeCarteira + ".json"));
+        }
         public bool escreverRenda()
         {
             var json_serializado = JsonConvert.SerializeObject(rendas);
@@ -182,6 +262,7 @@ namespace Ada
                 }
                 gastos = reserva;
             }
+            
         }
 
         public void expandirRenda()
