@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Ada
 {
+    // TODO: Add Mes -- em renda e sal
     public class Controller
     {
         private CarteiraPessoal[] cp;
@@ -264,11 +265,9 @@ namespace Ada
         {
             Console.WriteLine("Quanto tu vai ganhar?");
             float valor = float.Parse(Console.ReadLine());
-            Console.WriteLine("Me fala quantos meses tu vai receber, obs: 1 para não repetir");
-            int tipo = int.Parse(Console.ReadLine());
             Console.WriteLine("Agora um nome:");
             string nome = Console.ReadLine();
-            Salario s = new Salario(valor, tipo, nome);
+            Salario s = new Salario(valor, 12, nome);
             return s;
         }
         private void escreverNomesPE()
@@ -352,7 +351,6 @@ namespace Ada
         {
 
             float key = 1;
-            // p.escreverGasto();
 
             if (File.Exists(@"Arquivos/gastos" + p.NomeCarteira + ".json"))
             {
@@ -361,11 +359,8 @@ namespace Ada
             else
             {
                 Gasto[] g = new Gasto[50];
-                // Console.WriteLine("Test: "+p.Gastos.Length);
                 p.escreverGasto();
             }
-            // var json_serializado = JsonConvert.SerializeObject(p.Gastos);
-            // File.WriteAllText(@"Arquivos/CarteirasProfissionais.json", json_serializado);
             Console.WriteLine("Entramos " + p.NomeCarteira);
             while (key != 0)
             {
@@ -387,8 +382,10 @@ namespace Ada
                     case 2:
                         p.addRenda(addRenda());
                         break;
+                    case 3:
+                    p.addSalario(addSalario());
+                    break;
                     case 5:
-                        //Teste
 
                         Console.WriteLine("Gastos: " + p.Gastos.Length);
                         for (int i = 0; i < p.Gastos.Length; i++)
@@ -410,7 +407,7 @@ namespace Ada
         }
 
 
-        private Categoria[] callCategoria()
+        private Mes[] callCategoria()
         {
             String st = "";
             using (var sr = new StreamReader(@"Arquivos/Categorias.json"))
@@ -418,7 +415,7 @@ namespace Ada
                 st += sr.ReadToEnd();
 
             }
-            Categoria[] categorias = JsonConvert.DeserializeObject<Categoria[]>(st);
+            Mes[] categorias = JsonConvert.DeserializeObject<Mes[]>(st);
             return categorias;
         }
 
