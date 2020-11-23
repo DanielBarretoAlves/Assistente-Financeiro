@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Ada
 {
-    class CarteiraPessoal : Bolso
+    public class CarteiraPessoal : Bolso
     {
         private string nomeCarteira;
         private float buget;

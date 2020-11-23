@@ -19,6 +19,7 @@ namespace Ada
         {
             nomesCarteiras = new string[50];
             cp = new CarteiraPessoal[20];
+            limparCP();
             updateCP();
 
 
@@ -28,6 +29,8 @@ namespace Ada
         public string[] NomesCarteiras { get => nomesCarteiras; set => nomesCarteiras = value; }
         internal CarteiraPessoal[] Cp { get => cp; set => cp = value; }
 
+
+        //Metodos CP
         private void updateCP()
         {
             // gastos = null;
@@ -68,7 +71,11 @@ namespace Ada
         public bool addCarteira()
         {
             expandirCP();
-            CarteiraPessoal c = new CarteiraPessoal("Test", 1000);
+            Console.WriteLine("Fala seu nome");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Informe quanto você já tem guardado");
+            float money = float.Parse(Console.ReadLine());
+            CarteiraPessoal c = new CarteiraPessoal(nome, money);
             for (int i = 0; i < cp.Length; i++)
             {
                 if (cp[i] == null)
@@ -114,7 +121,40 @@ namespace Ada
             return false;
         }
 
-        
+        private CarteiraPessoal selectCP()
+        {
+            Console.WriteLine("Selecione Carteira Pessoal");
+            for (var i = 0; i < cp.Length; i++)
+            {
+                Console.WriteLine(i+ " - " + cp[i].NomeCarteira);
+            }
+            int escolha = int.Parse(Console.ReadLine());
+            return cp[escolha];
+            
+        }
+
+        private void addGastoCP(CarteiraPessoal c)
+        {
+            c.addGasto();
+        }
+
+        private void addRendaCP(CarteiraPessoal c)
+        {
+            c.addRenda();
+        }
+
+        private void addSalarioCP(CarteiraPessoal c)
+        {
+            c.addSalario();
+        }
+
+        private void statsCP(CarteiraPessoal c)
+        {
+            Console.WriteLine("Informe o Mes que deseja visualizar");
+            int mes = int.Parse(Console.ReadLine());
+            c.Agenda[mes].calcGastos();
+        }
+
 
     }
 }

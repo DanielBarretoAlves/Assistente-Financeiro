@@ -6,7 +6,8 @@ namespace Ada
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Controller ada = new Controller();
+            ada.addCarteira();
         }
     }
 }

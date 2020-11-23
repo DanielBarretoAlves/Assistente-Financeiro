@@ -308,7 +308,15 @@ namespace Ada
 
         }
 
-
+        public void calcGastos()
+        {
+            for (int i = 0; i < getGastosTamanho(); i++)
+            {
+                maxGasto += gastos[i].Valor;
+            }
+            writeGastos();
+            Console.WriteLine("Gasto Maximo: " + maxGasto);
+        }
 
 
 
