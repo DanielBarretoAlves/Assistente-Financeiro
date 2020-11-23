@@ -40,7 +40,7 @@ namespace Ada
 
             Console.WriteLine("Faz o seguinte digita o numero de vezes q vai repetir segue o ex");
             Console.WriteLine(" 1 - Não Repete");
-            Console.WriteLine(" 2+  Numero de meses que vai repetir");
+            Console.WriteLine(" 2 ou +  Numero de meses que vai repetir");
             int recorrente = int.Parse(Console.ReadLine());
 
             // TODO: Categoria
@@ -88,7 +88,6 @@ namespace Ada
 
         public bool addRenda()
         {
-            // (int mes, float valor, int tipo, string nome)
             Console.WriteLine("Me Fala o Titulo da Renda");
             Console.WriteLine("Algo tipo.. sei lá poem um nome ai");
             string nome = Console.ReadLine();
