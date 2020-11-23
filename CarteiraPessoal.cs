@@ -32,26 +32,26 @@ namespace Ada
         public bool addGasto()
         {
             // (string categoria, int importancia, int mes, float valor, int tipo, string nome)
-            //TODO: set Importancia
-            //TODO: Informe Mes
-            //TODO: Informe o Tipo
             Console.WriteLine("Fale o nome do gasto");
             string nomeG = Console.ReadLine();
+
             Console.WriteLine("Diga o Valor:");
             float valor = float.Parse(Console.ReadLine());
-            Console.WriteLine("Reco: ");
-            int ti = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("De 1 a 5 qual sendo 1 o mais baixo, qual o nivel de importancia desse gasto? ");
+            int importancia = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Fala o Mês ai, de 1 a 12 por favor nem vem botar texto");
             int mes = int.Parse(Console.ReadLine());
+            mes--;
 
             Console.WriteLine("Faz o seguinte digita o numero de vezes q vai repetir segue o ex");
             Console.WriteLine(" 1 - Não Repete");
             Console.WriteLine(" 2+  Numero de meses que vai repetir");
-            int repete = int.Parse(Console.ReadLine());
+            int recorrente = int.Parse(Console.ReadLine());
 
             // TODO: Categoria
-            Gasto g = new Gasto("Categoria", repete, mes, valor, ti, nomeG);
+            Gasto g = new Gasto(selectCategoria(), importancia, mes, valor, recorrente, nomeG);
             //Recorrencia
             int goal = g.Mes + g.Tipo;
             int current = g.Mes;
@@ -146,6 +146,30 @@ namespace Ada
                 agenda[i] = m;
             }
             escreverAgenda();
+        }
+
+        private Mes[] callCategoria()
+        {
+            String st = "";
+            using (var sr = new StreamReader(@"Arquivos/Categorias.json"))
+            {
+                st += sr.ReadToEnd();
+
+            }
+            Mes[] categorias = JsonConvert.DeserializeObject<Mes[]>(st);
+            return categorias;
+        }
+
+
+        private string selectCategoria()
+        {
+            Console.WriteLine("Escolha a Categoria");
+            for (int i = 0; i < callCategoria().Length; i++)
+            {
+                Console.WriteLine(i + " - " + callCategoria()[i].Nome);
+            }
+            int cat = int.Parse(Console.ReadLine());
+            return callCategoria()[cat].Nome;
         }
 
 

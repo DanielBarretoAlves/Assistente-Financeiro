@@ -13,8 +13,8 @@ namespace Ada
             // Controller ada = new Controller();
             CarteiraPessoal p = new CarteiraPessoal("Daniel", 4600);
             p.limparAgenda();
-            // p.addGasto();
-            p.addRenda();         
+            p.addGasto();
+            // p.addRenda();         
          
             // Console.WriteLine(p.Agenda[0].Gastos[0].Nome);
         }
