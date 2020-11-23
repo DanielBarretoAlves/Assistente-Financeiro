@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Ada
 {
-    class Mes
+    public class Mes
     {
 
         // EX De Nomeclatura de Gastos GastosDanielMar.json
