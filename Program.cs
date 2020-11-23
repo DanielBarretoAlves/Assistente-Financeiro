@@ -7,7 +7,7 @@ namespace Ada
         static void Main(string[] args)
         {
             Controller ada = new Controller();
-            ada.addCarteira();
+            // ada
         }
     }
 }

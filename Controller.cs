@@ -85,10 +85,10 @@ namespace Ada
                     return true;
                 }
             }
-            
+
             return false;
         }
-        
+
 
         private void expandirCP()
         {
@@ -114,7 +114,7 @@ namespace Ada
                     size++;
                 }
             }
-            if(dado.Length == size)
+            if (dado.Length == size)
             {
                 return true;
             }
@@ -126,11 +126,11 @@ namespace Ada
             Console.WriteLine("Selecione Carteira Pessoal");
             for (var i = 0; i < cp.Length; i++)
             {
-                Console.WriteLine(i+ " - " + cp[i].NomeCarteira);
+                Console.WriteLine(i + " - " + cp[i].NomeCarteira);
             }
             int escolha = int.Parse(Console.ReadLine());
             return cp[escolha];
-            
+
         }
 
         private void addGastoCP(CarteiraPessoal c)
@@ -154,6 +154,55 @@ namespace Ada
             int mes = int.Parse(Console.ReadLine());
             c.Agenda[mes].calcGastos();
         }
+
+        public void menuCP(CarteiraPessoal c)
+        {
+            Console.WriteLine("1 - Cadastrar Emprego");
+            Console.WriteLine("2 - Add um Gasto");
+            Console.WriteLine("3 - Add uma Renda");
+            Console.WriteLine("4 - Ver Gastos de Um Mês");
+            Console.WriteLine("5 - Ver Rendas de Um Mês");
+            Console.WriteLine("6 - Analisar Dados de Um Mês");
+            Console.WriteLine("0 - Sair");
+            int escolha = int.Parse(Console.ReadLine());
+            switch (escolha)
+            {
+                case 1:
+                    addSalarioCP(c);
+                    break;
+                case 2:
+                    addGastoCP(c);
+                    break;
+                case 3:
+                    addRendaCP(c);
+                    break;
+                case 4:
+                    statsCP(c);
+                    break;
+                case 5:
+                    addSalarioCP(c);
+                    break;
+                case 6:
+                    addSalarioCP(c);
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        public void createCP()
+        {
+            Console.WriteLine("Fala o Nome");
+            string name = Console.ReadLine();
+            Console.WriteLine("Informe quanto você já tem guardado");
+            float bud = float.Parse(Console.ReadLine());
+            CarteiraPessoal c = new CarteiraPessoal(name, bud);
+        }
+
+
+
+
 
 
     }
