@@ -34,12 +34,9 @@ namespace Ada
             // (string categoria, int importancia, int mes, float valor, int tipo, string nome)
             
 
-            Console.WriteLine("De 1 a 5 qual sendo 1 o mais baixo, qual o nivel de importancia desse gasto? ");
-            int importancia = int.Parse(Console.ReadLine());
+            
 
-            Console.WriteLine("Fala o Mês ai, de 1 a 12 por favor nem vem botar texto");
-            int mes = int.Parse(Console.ReadLine());
-            mes--;
+            
 
             Console.WriteLine("Faz o seguinte digita o numero de vezes q vai repetir segue o ex");
             Console.WriteLine(" 1 - Não Repete");
@@ -47,7 +44,7 @@ namespace Ada
             int recorrente = int.Parse(Console.ReadLine());
 
             // TODO: Categoria
-            Gasto g = new Gasto(selectCategoria(), importancia, mes, valor, recorrente, generateNome());
+            Gasto g = new Gasto(selectCategoria(), generateImportancia(), generateMes(), generateValue(), recorrente, generateNome());
             //Recorrencia
             int goal = g.Mes + g.Tipo;
             int current = g.Mes;
@@ -60,16 +57,33 @@ namespace Ada
             return true;
         }
 
+        private int generateImportancia()
+        {
+            Console.WriteLine("De 1 a 5 qual sendo 1 o mais baixo, qual o nivel de importancia desse gasto? ");
+            int importancia = int.Parse(Console.ReadLine());
+            return importancia;
+        }
+
+        private int generateMes()
+        {
+            Console.WriteLine("Fala o Mês ai, de 1 a 12 por favor nem vem botar texto");
+            int mes = int.Parse(Console.ReadLine());
+            mes--;
+            return mes;
+        }
+
         private float generateValue()
         {
             Console.WriteLine("Diga o Valor:");
-            return valor = float.Parse(Console.ReadLine());
+            float valor = float.Parse(Console.ReadLine());
+            return valor;
         }
 
         private string generateNome()
         {
             Console.WriteLine("Fale o nome do gasto");
-            return nomeG = Console.ReadLine();
+            string nome = Console.ReadLine();
+            return nome
         }
 
         public bool addRenda()
