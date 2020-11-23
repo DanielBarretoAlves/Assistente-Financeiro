@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ada
 {
-    class Produto
+    public class Produto
     {
         private float valor;
         private int tipo;

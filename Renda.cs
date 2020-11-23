@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ada
 {
-    class Renda : Produto
+    public class Renda : Produto
     {
         private int mes;
 

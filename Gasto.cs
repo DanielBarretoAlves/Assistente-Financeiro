@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ada
 {
-    class Gasto : Produto
+    public class Gasto : Produto
     {
         private string categoria;
         private int importancia;

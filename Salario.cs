@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ada
 {
-    class Salario : Produto
+    public class Salario : Produto
     {
         //Contrutor
         public Salario(float valor, int tipo, string nome) : base(valor, tipo, nome)
