@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "59jNw0nd/LB8BZOTBdD4F1CSYBwxpT+83so6Xiyyod7+UXKSFx5d+OEM4JpzAHCwO8OY/wKVzG3+EckGt9bXEw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\danie\\Documents\\Development\\Repositories\\Ada\\Assistente-Financeiro\\Assistente-Financeiro.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\danie\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

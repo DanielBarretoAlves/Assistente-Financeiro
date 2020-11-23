@@ -1,0 +1,55 @@
+public Gasto[] gastosAgenda(int m)
+        {
+            Gasto[] g = new Gasto[getGastosTamanho()];
+            for (int i = 0; i < getGastosTamanho(); i++)
+            {
+                if (gastos[i].Mes == m)
+                {
+                    if (gastos[i].Tipo > 1)
+                    {
+                        int att = i;
+                        int goal = att + gastos[i].Tipo;
+                        int index = 0;
+                        while (att<goal)
+                        {
+
+                            // att = 0,1,2,3
+                            // goal = 3
+                            // index = 0,1,2,3
+
+                            if (agenda[i].Gastos[index] == null)
+                            {
+                                agenda[i].Gastos[index] = gastos[i]; //Ta complexo --ATENÇÃO!!!
+                            }
+                            index++; 
+                            att++;
+                        }
+
+                    }
+                    agenda[i].Gastos[index];
+                }
+            }
+
+            return g;
+        }
+
+
+
+
+
+        public bool addGasto(Gasto g)
+        {
+            expandirGasto();
+
+            for (int i = 0; i < gastos.Length; i++)
+            {
+                if (gastos[i] == null)
+                {
+                    gastos[i] = g;
+                    //ADD na Agenda
+                    //Agenda get gasto pega o gasto g e põe ele em todos os meses que ele se encontra
+                    return true;
+                }
+            }
+            return false;
+        }
