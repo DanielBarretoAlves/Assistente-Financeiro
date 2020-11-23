@@ -72,6 +72,37 @@ namespace Ada
             writeCP();
         }
 
+        private void expandirCP()
+        {
+            CarteiraPessoal[] reserva = new CarteiraPessoal[this.cp.Length * 2];
+            if (IsFull(cp))
+            {
+                for (int i = 0; i < cp.Length; i++)
+                {
+                    reserva[i] = cp[i];
+                }
+                cp = reserva;
+            }
+
+        }
+        public bool IsFull(object[] dado)
+        {
+            int size = 0;
+            //Somando a quantidade de casas do array oculpadas
+            for (int i = 0; i < dado.Length; i++)
+            {
+                if (dado[i] != null)
+                {
+                    size++;
+                }
+            }
+            if(dado.Length == size)
+            {
+                return true;
+            }
+            return false;
+        }
+
         
 
     }
