@@ -81,9 +81,9 @@ namespace Ada
 
         private string generateNome()
         {
-            Console.WriteLine("Fale o nome do gasto");
+            Console.WriteLine("de um nome");
             string nome = Console.ReadLine();
-            return nome
+            return nome;
         }
 
         public bool addRenda()
