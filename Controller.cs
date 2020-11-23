@@ -65,12 +65,23 @@ namespace Ada
             writeCP();
         }
 
-        public void addCarteira()
+        public bool addCarteira()
         {
+            expandirCP();
             CarteiraPessoal c = new CarteiraPessoal("Test", 1000);
-            cp[0] = c;
-            writeCP();
+            for (int i = 0; i < cp.Length; i++)
+            {
+                if (cp[i] == null)
+                {
+                    cp[i] = c;
+                    writeCP();
+                    return true;
+                }
+            }
+            
+            return false;
         }
+        
 
         private void expandirCP()
         {
