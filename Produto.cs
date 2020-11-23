@@ -19,6 +19,13 @@ namespace Ada
             this.nome = nome;
         }
 
+        public Produto(float valor, string nome)
+        {
+            this.valor = valor;
+            //TIP: TIPO = X é o numero de meses em que o valor se repete, Se Tipo for igual a 1 o produto não se repete
+            this.nome = nome;
+        }
+
         //Getters & Setters
         public float Valor { get => valor; set => valor = value; }
         public int Tipo { get => tipo; set => tipo = value; }

@@ -31,12 +31,6 @@ namespace Ada
 
         public bool addGasto()
         {
-            // (string categoria, int importancia, int mes, float valor, int tipo, string nome)
-            
-
-            
-
-            
 
             Console.WriteLine("Faz o seguinte digita o numero de vezes q vai repetir segue o ex");
             Console.WriteLine(" 1 - Não Repete");
@@ -116,7 +110,17 @@ namespace Ada
         {
             // (float valor, int tipo, string nome)
             Console.WriteLine("Onde ou com o que voce trampa põe um titulo ai");
-            // Salario s = new Salario()
+            String name = Console.ReadLine();
+            Console.WriteLine("Informe o Salario");
+            float valor = float.Parse(Console.ReadLine());
+            Salario s = new Salario(valor, name);
+            // vai add os 12 meses do ano
+            for (int i = 0; i < 12; i++)
+            {
+                agenda[i].addSalario(s);
+                
+            }
+            escreverAgenda();
             return true;
         }
 

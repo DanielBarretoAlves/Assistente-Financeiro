@@ -7,7 +7,7 @@ namespace Ada
     public class Salario : Produto
     {
         //Contrutor
-        public Salario(float valor, int tipo, string nome) : base(valor, tipo, nome)
+        public Salario(float valor, string nome) : base(valor, nome)
         {
             // int escolha = 0;
             // Console.WriteLine("Qual tipo de carteira? \n 1 - Carteira Pessoal \n 2 - Carteira Profissional");
