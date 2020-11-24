@@ -112,9 +112,7 @@ namespace Ada
             Renda r = new Renda(mes, valor, repete, nome);
             int goal = r.Mes + r.Tipo;
             int current = r.Mes;
-
             budget = agenda[current].Budget;
-
             while (current < goal)
             {
                 agenda[current].addRenda(r);
@@ -173,6 +171,7 @@ namespace Ada
             return (File.Exists(@"Arquivos/agenda" + nomeCarteira + ".json"));
         }
 
+        //Verifica se um Array está cheio
         public bool IsFull(object[] dado)
         {
             throw new NotImplementedException();

@@ -67,7 +67,7 @@ namespace Ada
             this.budget = budget;
             // updateGastos();
         }
-        
+
         public string Nome { get => nome; set => nome = value; }
         public string NomeCarteira { get => nomeCarteira; set => nomeCarteira = value; }
         public float Budget { get => budget; set => budget = value; }
@@ -77,10 +77,11 @@ namespace Ada
         public Gasto[] Gastos { get => gastos; set => gastos = value; }
         public Salario[] Salarios { get => salarios; set => salarios = value; }
         public Renda[] Rendas { get => rendas; set => rendas = value; }
-        
+
 
         //Metodos
 
+        //Verifica se o arquivo dos gastos existe se sim ele manda ler se não ele cria
         private void updateGastos()
         {
             // gastos = null;
@@ -94,12 +95,15 @@ namespace Ada
             }
         }
 
+        //Serializa um arquivo json com as informações do mes
         private bool writeGastos()
         {
             var json_serializado = JsonConvert.SerializeObject(gastos);
             File.WriteAllText(@"Arquivos/gastos" + nomeCarteira + "" + nome + ".json", json_serializado);
             return (File.Exists(@"Arquivos/gastos" + nomeCarteira + "" + nome + ".json"));
         }
+
+        //Le um arquivo json e setta os dados
         private bool readGastos()
         {
             String st = "";
@@ -112,6 +116,7 @@ namespace Ada
             return true;
         }
 
+        //Verifica se o arquivo dos gastos existe se sim ele manda ler se não ele cria
         private void updateRendas()
         {
             // gastos = null;
@@ -124,12 +129,16 @@ namespace Ada
                 writeRenda();
             }
         }
+        //Serializa um arquivo json com as informações do mes
+        
         private bool writeRenda()
         {
             var json_serializado = JsonConvert.SerializeObject(gastos);
             File.WriteAllText(@"Arquivos/rendas" + nomeCarteira + "" + nome + ".json", json_serializado);
             return (File.Exists(@"Arquivos/rendas" + nomeCarteira + "" + nome + ".json"));
         }
+        
+        //Le um arquivo json e setta os dados
         private bool readRenda()
         {
             String st = "";
@@ -141,6 +150,8 @@ namespace Ada
             rendas = JsonConvert.DeserializeObject<Renda[]>(st);
             return true;
         }
+        
+        //Configura o nome de cada mes da agenda
         private void setNameMes(int num)
         {
             switch (num)
@@ -185,6 +196,8 @@ namespace Ada
                     break;
             }
         }
+        
+        //Retorna o numero de casas oculpadas de um array
         public int getGastosTamanho()
         {
             int tamanho = 0;
@@ -198,6 +211,7 @@ namespace Ada
             return tamanho;
         }
 
+        //Retorna o numero de casas oculpadas de um array
         public int getRendasTamanho()
         {
             int tamanho = 0;
@@ -211,6 +225,7 @@ namespace Ada
             return tamanho;
         }
 
+        //Retorna o numero de casas oculpadas de um array
         public int getSalariosTamanho()
         {
             int tamanho = 0;
@@ -223,6 +238,8 @@ namespace Ada
             }
             return tamanho;
         }
+        
+        //Atualiza o MaxGasto
         public void updateMaxGasto()
         {
             for (int i = 0; i < getGastosTamanho(); i++)
@@ -231,6 +248,8 @@ namespace Ada
             }
         }
 
+
+        //Expande o Array De Gasto
         private void expandirGasto()
         {
             Gasto[] reserva = new Gasto[this.gastos.Length * 2];
@@ -244,15 +263,15 @@ namespace Ada
             }
 
         }
+        
+        //Verifica se o array está cheio
         private bool IsFull(object[] dado)
         {
             int size = 0;
-            //Somando a quantidade de casas do array oculpadas
             for (int i = 0; i < dado.Length; i++)
             {
                 if (dado[i] != null)
                 {
-                    // Console.WriteLine("Entrou");
                     size++;
                 }
             }
@@ -263,18 +282,17 @@ namespace Ada
             return false;
         }
 
+        
+        //Adiciona um Gasto ao Mes
         public bool addGasto(Gasto g)
         {
             expandirGasto();
-            Console.WriteLine("Valor Gasto: " + g.Valor);
-            Console.WriteLine("Budget Atual" + budget);
             for (int i = 0; i < gastos.Length; i++)
             {
                 if (gastos[i] == null)
                 {
                     gastos[i] = g;
-                    maxGasto+= g.Valor;
-                    // budget = budget - g.Valor;
+                    maxGasto += g.Valor;
                     Console.WriteLine("Valor Budget Final" + budget);
                     return true;
                 }
@@ -283,8 +301,10 @@ namespace Ada
 
         }
 
-        public bool addRenda(Renda r)
         
+        //Adiciona uma Renda ao Mes
+        public bool addRenda(Renda r)
+
         {
             expandirRenda();
             for (int i = 0; i < rendas.Length; i++)
@@ -301,8 +321,10 @@ namespace Ada
 
         }
 
-        public bool addSalario(Salario s)
         
+        //Adiciona um Salario ao Mes
+        public bool addSalario(Salario s)
+
         {
             expandirSalario();
             for (int i = 0; i < salarios.Length; i++)
@@ -311,9 +333,6 @@ namespace Ada
                 {
                     salarios[i] = s;
                     maxRenda += s.Valor;
-                    // budget += s.Valor;
-                    Console.WriteLine("Salario: "+ s.Valor);
-                    Console.WriteLine("Budget: " + budget);
                     return true;
                 }
             }
@@ -321,6 +340,8 @@ namespace Ada
 
         }
 
+        
+        //Expande o array
         private void expandirRenda()
         {
             Renda[] reserva = new Renda[this.rendas.Length * 2];
@@ -335,6 +356,8 @@ namespace Ada
 
         }
 
+        
+        //Expande o Array
         private void expandirSalario()
         {
             Salario[] reserva = new Salario[this.rendas.Length * 2];
@@ -350,6 +373,7 @@ namespace Ada
         }
 
 
+        //Mostra os Dados do Mês
         public void stats()
         {
             Console.WriteLine("Gastos do Mês: " + maxGasto);

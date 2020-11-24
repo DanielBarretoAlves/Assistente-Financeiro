@@ -27,42 +27,70 @@ namespace Ada
 
         public bool addGasto()
         {
-            //(string categoria, int importancia, int mes, float valor, int tipo, string nome)
-            //TODO: set Importancia
-            //TODO: Informe Mes
-            //TODO: Informe o Tipo
-            Console.WriteLine("Fale o nome do gasto");
-            string nomeG = Console.ReadLine();
-            Console.WriteLine("Diga o Valor:");
-            float valor = float.Parse(Console.ReadLine());
-            Console.WriteLine("Reco: ");
-            int ti = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Fala o Mês ai, de 1 a 12 por favor nem vem botar texto");
-            int mes = int.Parse(Console.ReadLine());
-
             Console.WriteLine("Faz o seguinte digita o numero de vezes q vai repetir segue o ex");
             Console.WriteLine(" 1 - Não Repete");
-            Console.WriteLine(" 2+  Numero de meses que vai repetir");
-            int repete = int.Parse(Console.ReadLine());
-
+            Console.WriteLine(" 2 ou +  Numero de meses que vai repetir");
+            int recorrente = int.Parse(Console.ReadLine());
             // TODO: Categoria
-            Gasto g = new Gasto("Categoria", repete, mes, valor, ti, nomeG);
+            Gasto g = new Gasto(selectCategoria(), generateImportancia(), generateMes(), generateValue(), recorrente, generateNome());
             //Recorrencia
             int goal = g.Mes + g.Tipo;
+            Console.WriteLine("Mes: " + g.Mes);
             int current = g.Mes;
+
+            budget = agenda[current].Budget;
+            // agenda[current].addGasto(g);
+
+
             while (current < goal)
             {
                 agenda[current].addGasto(g);
+                Console.WriteLine("Budgte no Retorno: " + agenda[current].Budget);
+                for (int i = current; i < 12; i++)
+                {
+
+                    agenda[i].Budget = agenda[i].Budget - g.Valor;
+                    // Console.WriteLine("Budgt no Loop: " + agenda[i].Budget);
+                }
                 current++;
             }
+
+
+
             escreverAgenda();
             return true;
+        }
+        private int generateImportancia()
+        {
+            Console.WriteLine("De 1 a 5 qual sendo 1 o mais baixo, qual o nivel de importancia desse gasto? ");
+            int importancia = int.Parse(Console.ReadLine());
+            return importancia;
+        }
+
+        private int generateMes()
+        {
+            Console.WriteLine("Fala o Mês ai, de 1 a 12 por favor nem vem botar texto");
+            int mes = int.Parse(Console.ReadLine());
+            mes--;
+            return mes;
+        }
+
+        private float generateValue()
+        {
+            Console.WriteLine("Diga o Valor:");
+            float valor = float.Parse(Console.ReadLine());
+            return valor;
+        }
+
+        private string generateNome()
+        {
+            Console.WriteLine("de um nome");
+            string nome = Console.ReadLine();
+            return nome;
         }
 
         public bool addRenda()
         {
-            // (int mes, float valor, int tipo, string nome)
             Console.WriteLine("Me Fala o Titulo da Renda");
             Console.WriteLine("Algo tipo.. sei lá poem um nome ai");
             string nome = Console.ReadLine();
@@ -78,9 +106,15 @@ namespace Ada
             Renda r = new Renda(mes, valor, repete, nome);
             int goal = r.Mes + r.Tipo;
             int current = r.Mes;
+            budget = agenda[current].Budget;
             while (current < goal)
             {
                 agenda[current].addRenda(r);
+                for (int i = current; i < 12; i++)
+                {
+                    agenda[i].Budget = agenda[i].Budget + r.Valor;
+                    // Console.WriteLine("Budgt no Loop: " + agenda[i].Budget);
+                }
                 current++;
             }
             escreverAgenda();
@@ -91,19 +125,34 @@ namespace Ada
         {
             // (float valor, int tipo, string nome)
             Console.WriteLine("Onde ou com o que voce trampa põe um titulo ai");
-            // Salario s = new Salario()
+            String name = Console.ReadLine();
+            Console.WriteLine("Informe o Salario");
+            float valor = float.Parse(Console.ReadLine());
+            Salario s = new Salario(valor, name);
+            // vai add os 12 meses do ano
+            for (int i = 0; i < 12; i++)
+            {
+                agenda[i].addSalario(s);
+                budget += s.Valor;
+                agenda[i].Budget = budget;
+
+            }
+            escreverAgenda();
             return true;
         }
 
         // Verifica se a agenda existe caso sim ele manda ler, caso não ele cria e escrever
         public void checkAgenda()
         {
+            Console.WriteLine("Entrou-------------------------------------------------------");
             if (File.Exists(@"Arquivos/agenda" + NomeCarteira + ".json"))
             {
+                Console.WriteLine("Existe");
                 lerAgenda();
             }
             else
             {
+                Console.WriteLine("!Existe");
                 limparAgenda();
             }
         }
@@ -112,10 +161,11 @@ namespace Ada
         public bool escreverAgenda()
         {
             var json_serializado = JsonConvert.SerializeObject(agenda);
-            File.WriteAllText(@"Arquivos/agenda" + nomeCarteira+".json", json_serializado);
-            return (File.Exists(@"Arquivos/agenda" + nomeCarteira+".json"));
+            File.WriteAllText(@"Arquivos/agenda" + nomeCarteira + ".json", json_serializado);
+            return (File.Exists(@"Arquivos/agenda" + nomeCarteira + ".json"));
         }
 
+        //Verifica se um Array está cheio
         public bool IsFull(object[] dado)
         {
             throw new NotImplementedException();
@@ -124,7 +174,7 @@ namespace Ada
         public bool lerAgenda()
         {
             String st = "";
-            using (var sr = new StreamReader(@"Arquivos/agenda" + nomeCarteira+".json"))
+            using (var sr = new StreamReader(@"Arquivos/agenda" + nomeCarteira + ".json"))
             {
                 st += sr.ReadToEnd();
 
@@ -143,5 +193,38 @@ namespace Ada
             }
             escreverAgenda();
         }
+
+        private Mes[] callCategoria()
+        {
+            String st = "";
+            using (var sr = new StreamReader(@"Arquivos/Categorias.json"))
+            {
+                st += sr.ReadToEnd();
+
+            }
+            Mes[] categorias = JsonConvert.DeserializeObject<Mes[]>(st);
+            return categorias;
+        }
+
+
+        private string selectCategoria()
+        {
+            Console.WriteLine("Escolha a Categoria");
+            for (int i = 0; i < callCategoria().Length; i++)
+            {
+                Console.WriteLine(i + " - " + callCategoria()[i].Nome);
+            }
+            int cat = int.Parse(Console.ReadLine());
+            return callCategoria()[cat].Nome;
+        }
+
+        
+
+
+
+
+
+
+
     }
 }
