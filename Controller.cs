@@ -44,10 +44,10 @@ namespace Ada
                 switch (value)
                 {
                     case 1:
-                    menuCP(cp[createCP()]);
+                    menuCP(createCP());
                         break;
                     default:
-                    menuCP(cp[selectCP()]);
+                    menuCP(selectCP());
                         break;
                 }
                 
@@ -56,7 +56,7 @@ namespace Ada
             else
             {
                 limparCP();
-                menuCP(cp[createCP()]);
+                menuCP(createCP());
             }
         }
 
@@ -172,12 +172,13 @@ namespace Ada
 
         private void statsCP(CarteiraPessoal c)
         {
-            Console.WriteLine("Informe o Mes que deseja visualizar");
+            Console.WriteLine("Informe o Mes que deseja visualizar, de 1 a 12 pelo amor de Deus né!");
             int mes = int.Parse(Console.ReadLine());
+            mes--;
             c.Agenda[mes].stats();
         }
 
-        public void menuCP(CarteiraPessoal c)
+        public void menuCP(int p)
         {
 
             int escolha = 10;
@@ -188,28 +189,29 @@ namespace Ada
                 Console.WriteLine("3 - Add uma Renda");
                 Console.WriteLine("4 - Ver Gastos de Um Mês");
                 Console.WriteLine("5 - Ver Rendas de Um Mês");
-                Console.WriteLine("6 - Analisar Dados de Um Mês");
+                Console.WriteLine("6 - Apagar todas as Carteiras");
                 Console.WriteLine("0 - Sair");
                 escolha = int.Parse(Console.ReadLine());
                 switch (escolha)
                 {
                     case 1:
-                        addSalarioCP(c);
+                        addSalarioCP(cp[p]);
                         break;
                     case 2:
-                        addGastoCP(c);
+                        addGastoCP(cp[p]);
                         break;
                     case 3:
-                        addRendaCP(c);
+                        addRendaCP(cp[p]);
                         break;
                     case 4:
-                        statsCP(c);
+                        statsCP(cp[p]);
                         break;
                     case 5:
-                        addSalarioCP(c);
+                        addSalarioCP(cp[p]);
                         break;
                     case 6:
-                        addSalarioCP(c);
+                        limparCP();
+                        escolha = 0;
                         break;
                     default:
                         break;
@@ -230,7 +232,6 @@ namespace Ada
             {
                 if (cp[i] == null)
                 {
-                    Console.WriteLine("entrou");
                     cp[i] = c;
                     writeCP();
                     return i;

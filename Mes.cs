@@ -67,15 +67,17 @@ namespace Ada
             this.budget = budget;
             // updateGastos();
         }
+        
         public string Nome { get => nome; set => nome = value; }
+        public string NomeCarteira { get => nomeCarteira; set => nomeCarteira = value; }
+        public float Budget { get => budget; set => budget = value; }
         public float Balanco { get => balanco; set => balanco = value; }
         public float MaxRenda { get => maxRenda; set => maxRenda = value; }
         public float MaxGasto { get => maxGasto; set => maxGasto = value; }
         public Gasto[] Gastos { get => gastos; set => gastos = value; }
         public Salario[] Salarios { get => salarios; set => salarios = value; }
         public Renda[] Rendas { get => rendas; set => rendas = value; }
-        public string NomeCarteira { get => nomeCarteira; set => nomeCarteira = value; }
-        public float Budget { get => budget; set => budget = value; }
+        
 
         //Metodos
 
@@ -264,13 +266,16 @@ namespace Ada
         public bool addGasto(Gasto g)
         {
             expandirGasto();
+            Console.WriteLine("Valor Gasto: " + g.Valor);
+            Console.WriteLine("Budget Atual" + budget);
             for (int i = 0; i < gastos.Length; i++)
             {
                 if (gastos[i] == null)
                 {
                     gastos[i] = g;
                     maxGasto+= g.Valor;
-                    budget -= g.Valor;
+                    // budget = budget - g.Valor;
+                    Console.WriteLine("Valor Budget Final" + budget);
                     return true;
                 }
             }
@@ -288,7 +293,7 @@ namespace Ada
                 {
                     rendas[i] = r;
                     maxRenda += r.Valor;
-                    budget += r.Valor;
+                    // budget += r.Valor;
                     return true;
                 }
             }
@@ -306,7 +311,7 @@ namespace Ada
                 {
                     salarios[i] = s;
                     maxRenda += s.Valor;
-                    budget += s.Valor;
+                    // budget += s.Valor;
                     Console.WriteLine("Salario: "+ s.Valor);
                     Console.WriteLine("Budget: " + budget);
                     return true;
@@ -344,35 +349,6 @@ namespace Ada
 
         }
 
-        // private void calcGastos()
-        // {
-        //     for (int i = 0; i < getGastosTamanho(); i++)
-        //     {
-        //         maxGasto += gastos[i].Valor;
-        //     }
-        //     writeGastos();
-        //     // Console.WriteLine("Gasto Total Do Mês: " + maxGasto);
-        // }
-
-        // private void calcRenda()
-        // {
-        //     for (int i = 0; i < getRendasTamanho(); i++)
-        //     {
-        //         maxRenda += rendas[i].Valor;
-        //     }
-        //     for (int i = 0; i < getSalariosTamanho(); i++)
-        //     {
-        //         maxRenda += salarios[i].Valor;
-        //     }
-        //     writeGastos();
-        //     // Console.WriteLine("Lucro Total do Mês: " + maxRenda);
-        // }
-
-        // private void calcbudget()
-        // {
-        //     balanco = maxRenda - maxGasto;
-        //     Console.WriteLine("Saldo final do Mês: " + balanco);
-        // }
 
         public void stats()
         {

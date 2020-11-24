@@ -36,20 +36,32 @@ namespace Ada
             Console.WriteLine(" 1 - Não Repete");
             Console.WriteLine(" 2 ou +  Numero de meses que vai repetir");
             int recorrente = int.Parse(Console.ReadLine());
-
             // TODO: Categoria
             Gasto g = new Gasto(selectCategoria(), generateImportancia(), generateMes(), generateValue(), recorrente, generateNome());
             //Recorrencia
             int goal = g.Mes + g.Tipo;
-            Console.WriteLine("Mes: "+ g.Mes);
+            Console.WriteLine("Mes: " + g.Mes);
             int current = g.Mes;
+
+            budget = agenda[current].Budget;
+            // agenda[current].addGasto(g);
+
+
             while (current < goal)
             {
                 agenda[current].addGasto(g);
-                budget = budget - g.Valor;
-                agenda[current].Budget = budget;
+                Console.WriteLine("Budgte no Retorno: " + agenda[current].Budget);
+                for (int i = current; i < 12; i++)
+                {
+
+                    agenda[i].Budget = agenda[i].Budget - g.Valor;
+                    // Console.WriteLine("Budgt no Loop: " + agenda[i].Budget);
+                }
                 current++;
             }
+
+
+
             escreverAgenda();
             return true;
         }
@@ -100,11 +112,17 @@ namespace Ada
             Renda r = new Renda(mes, valor, repete, nome);
             int goal = r.Mes + r.Tipo;
             int current = r.Mes;
+
+            budget = agenda[current].Budget;
+
             while (current < goal)
             {
                 agenda[current].addRenda(r);
-                budget += r.Valor;
-                agenda[current].Budget = budget;
+                for (int i = current; i < 12; i++)
+                {
+                    agenda[i].Budget = agenda[i].Budget + r.Valor;
+                    // Console.WriteLine("Budgt no Loop: " + agenda[i].Budget);
+                }
                 current++;
             }
             escreverAgenda();
@@ -123,8 +141,9 @@ namespace Ada
             for (int i = 0; i < 12; i++)
             {
                 agenda[i].addSalario(s);
+                budget += s.Valor;
                 agenda[i].Budget = budget;
-                
+
             }
             escreverAgenda();
             return true;
@@ -150,8 +169,8 @@ namespace Ada
         public bool escreverAgenda()
         {
             var json_serializado = JsonConvert.SerializeObject(agenda);
-            File.WriteAllText(@"Arquivos/agenda" + nomeCarteira+".json", json_serializado);
-            return (File.Exists(@"Arquivos/agenda" + nomeCarteira+".json"));
+            File.WriteAllText(@"Arquivos/agenda" + nomeCarteira + ".json", json_serializado);
+            return (File.Exists(@"Arquivos/agenda" + nomeCarteira + ".json"));
         }
 
         public bool IsFull(object[] dado)
@@ -162,7 +181,7 @@ namespace Ada
         public bool lerAgenda()
         {
             String st = "";
-            using (var sr = new StreamReader(@"Arquivos/agenda" + nomeCarteira+".json"))
+            using (var sr = new StreamReader(@"Arquivos/agenda" + nomeCarteira + ".json"))
             {
                 st += sr.ReadToEnd();
 
