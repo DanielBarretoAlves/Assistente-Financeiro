@@ -41,7 +41,7 @@ namespace Ada
             else
             {
                 limparCP();
-                menuCP(createCP());
+                menuCP(cp[createCP()]);
             }
         }
 
@@ -122,7 +122,7 @@ namespace Ada
             return false;
         }
 
-        private CarteiraPessoal selectCP()
+        private int selectCP()
         {
             Console.WriteLine("Selecione Carteira Pessoal");
             for (var i = 0; i < cp.Length; i++)
@@ -130,23 +130,26 @@ namespace Ada
                 Console.WriteLine(i + " - " + cp[i].NomeCarteira);
             }
             int escolha = int.Parse(Console.ReadLine());
-            return cp[escolha];
+            return escolha;
 
         }
 
         private void addGastoCP(CarteiraPessoal c)
         {
             c.addGasto();
+            writeCP();
         }
 
         private void addRendaCP(CarteiraPessoal c)
         {
             c.addRenda();
+            writeCP();
         }
 
         private void addSalarioCP(CarteiraPessoal c)
         {
             c.addSalario();
+            writeCP();
         }
 
         private void statsCP(CarteiraPessoal c)
@@ -192,7 +195,7 @@ namespace Ada
 
         }
 
-        private CarteiraPessoal createCP()
+        private int createCP()
         {
             Console.WriteLine("Fala o Nome");
             string name = Console.ReadLine();
@@ -207,10 +210,10 @@ namespace Ada
                     Console.WriteLine("entrou");
                     cp[i] = c;
                     writeCP();
-                    return cp[i];
+                    return i;
                 }
             }
-            return null;
+            return 0;
         }
 
 

@@ -9,8 +9,22 @@
                 "MaxRenda": 0.0,
                 "MaxGasto": 0.0,
                 "Gastos": [
-                    null,
-                    null,
+                    {
+                        "Categoria": "Casa",
+                        "Importancia": 1,
+                        "Mes": 0,
+                        "Valor": 15.0,
+                        "Tipo": 1,
+                        "Nome": "Feijão"
+                    },
+                    {
+                        "Categoria": "Saude",
+                        "Importancia": 3,
+                        "Mes": 0,
+                        "Valor": 95.0,
+                        "Tipo": 1,
+                        "Nome": "Whey"
+                    },
                     null,
                     null,
                     null,
@@ -61,12 +75,21 @@
                     null
                 ],
                 "Salarios": [
-                    null,
+                    {
+                        "Valor": 1054.0,
+                        "Tipo": 0,
+                        "Nome": "Monteiro"
+                    },
                     null,
                     null
                 ],
                 "Rendas": [
-                    null,
+                    {
+                        "Mes": 0,
+                        "Valor": 0.2,
+                        "Tipo": 1,
+                        "Nome": "Pic Pay"
+                    },
                     null,
                     null,
                     null,
@@ -177,7 +200,11 @@
                     null
                 ],
                 "Salarios": [
-                    null,
+                    {
+                        "Valor": 1054.0,
+                        "Tipo": 0,
+                        "Nome": "Monteiro"
+                    },
                     null,
                     null
                 ],
@@ -293,7 +320,11 @@
                     null
                 ],
                 "Salarios": [
-                    null,
+                    {
+                        "Valor": 1054.0,
+                        "Tipo": 0,
+                        "Nome": "Monteiro"
+                    },
                     null,
                     null
                 ],
@@ -409,7 +440,11 @@
                     null
                 ],
                 "Salarios": [
-                    null,
+                    {
+                        "Valor": 1054.0,
+                        "Tipo": 0,
+                        "Nome": "Monteiro"
+                    },
                     null,
                     null
                 ],
@@ -525,7 +560,11 @@
                     null
                 ],
                 "Salarios": [
-                    null,
+                    {
+                        "Valor": 1054.0,
+                        "Tipo": 0,
+                        "Nome": "Monteiro"
+                    },
                     null,
                     null
                 ],
@@ -641,7 +680,11 @@
                     null
                 ],
                 "Salarios": [
-                    null,
+                    {
+                        "Valor": 1054.0,
+                        "Tipo": 0,
+                        "Nome": "Monteiro"
+                    },
                     null,
                     null
                 ],
@@ -757,7 +800,11 @@
                     null
                 ],
                 "Salarios": [
-                    null,
+                    {
+                        "Valor": 1054.0,
+                        "Tipo": 0,
+                        "Nome": "Monteiro"
+                    },
                     null,
                     null
                 ],
@@ -873,7 +920,11 @@
                     null
                 ],
                 "Salarios": [
-                    null,
+                    {
+                        "Valor": 1054.0,
+                        "Tipo": 0,
+                        "Nome": "Monteiro"
+                    },
                     null,
                     null
                 ],
@@ -989,7 +1040,11 @@
                     null
                 ],
                 "Salarios": [
-                    null,
+                    {
+                        "Valor": 1054.0,
+                        "Tipo": 0,
+                        "Nome": "Monteiro"
+                    },
                     null,
                     null
                 ],
@@ -1105,7 +1160,11 @@
                     null
                 ],
                 "Salarios": [
-                    null,
+                    {
+                        "Valor": 1054.0,
+                        "Tipo": 0,
+                        "Nome": "Monteiro"
+                    },
                     null,
                     null
                 ],
@@ -1221,7 +1280,11 @@
                     null
                 ],
                 "Salarios": [
-                    null,
+                    {
+                        "Valor": 1054.0,
+                        "Tipo": 0,
+                        "Nome": "Monteiro"
+                    },
                     null,
                     null
                 ],
@@ -1337,7 +1400,11 @@
                     null
                 ],
                 "Salarios": [
-                    null,
+                    {
+                        "Valor": 1054.0,
+                        "Tipo": 0,
+                        "Nome": "Monteiro"
+                    },
                     null,
                     null
                 ],
