@@ -1,13 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "oMENEb0UdxNqBe/mF3qQJ0317yGPwY2L0IQqQc0qKOW3R5dDuF3KwpIJCfwIjI4CrRO8k3+0kaFrUHBcb5vdAA==",
+  "dgSpecHash": "1/pGHXv+mee8llApeku8Hd0vTXhMQxZaZvuj4wWammf9sppPf+m+/xdFMrXZHVbe0fyYXY0z45iJ34lQGemG+g==",
   "success": true,
-  "projectFilePath": "/home/daniel/Git/Assistente-Financeiro/Assistente-Financeiro.csproj",
+  "projectFilePath": "C:\\Users\\danie\\Documents\\Development\\Repositories\\Assistente-Financeiro\\Assistente-Financeiro.csproj",
   "expectedPackageFiles": [
-    "/home/daniel/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
-    "/home/daniel/.nuget/packages/microsoft.netcore.app.ref/3.1.0/microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
-    "/home/daniel/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.8/microsoft.aspnetcore.app.ref.3.1.8.nupkg.sha512",
-    "/home/daniel/.nuget/packages/microsoft.netcore.app.host.linux-x64/3.1.9/microsoft.netcore.app.host.linux-x64.3.1.9.nupkg.sha512"
+    "C:\\Users\\danie\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],
   "logs": []
 }
