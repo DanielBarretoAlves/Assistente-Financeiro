@@ -6,7 +6,8 @@
   <h3 align="center">ADA</h3>
 
   <p align="center">
-    Uma Assistente Financeira nada formal, que te ajuda a todo momento pelo menos quando ela está de bom humor
+    Olá me chamo Ada, sou uma assistente financeira estou aqui para te ajudar a sair dessa vidade mer.. digo sair do vermelho ;-)
+    Faça o Clone do Repositorio e me deixe te dar um help.
     <br />
     <a href="https://github.com/DanielBarretoAlves/Assistente-Financeiro"><strong>Explore os Arquivos »</strong></a>
   </p>
@@ -16,7 +17,8 @@
 <!-- GETTING STARTED -->
 ## Comece por aqui
 
-Como Iniciar...
+Ao Entrar, não estranhe sua personalidade, ela vai verificar se já existe algum arquivo salvo em seu computador.
+Caso não exista a Ada vai guia-lo a tela de cadastro. para que possa entrar com suas informações.
 
 ### Prerequisitos
 
@@ -54,18 +56,18 @@ Comparada com outras ferramentas do mercado Ada é simples para utilizar oque a 
 <!-- CONTACT -->
 ## Contato
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Daniel Barreto - [Linkedin](https://www.linkedin.com/in/daniel-barreto-63869811a/)
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/DanielBarretoAlves/Assistente-Financeiro](https://github.com/DanielBarretoAlves/Assistente-Financeiro)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Renconhecimentos
 
-* []()
-* []()
-* []()
+* [Daniel Barreto](https://github.com/DanielBarretoAlves)
+* [Rodrigo Di Jorge](https://github.com/RodrigoDiJorge)
+
 
 
 
