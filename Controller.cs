@@ -23,7 +23,7 @@ namespace Ada
             ct = new CarteiraProfissional[20];
             int callAda = 10;
             Console.WriteLine("Olá sou Ada sua assistente financeira");
-            Console.WriteLine("Nem vem querer ser formal comigo não sou uma engomadinha ;-)");
+            Console.WriteLine("Nem vem querer ser formal comigo não sou uma engomadinha ( -_-)");
             while (callAda != 0)
             {
                 Console.WriteLine("Escolhe ai oq vc quer:");
@@ -207,13 +207,15 @@ namespace Ada
             int escolha = 10;
             while (escolha != 0)
             {
+                Console.WriteLine("-----------------------");
                 Console.WriteLine("1 - Cadastrar Emprego");
                 Console.WriteLine("2 - Add um Gasto");
                 Console.WriteLine("3 - Add uma Renda");
                 Console.WriteLine("4 - Ver Gastos de Um Mês");
-                Console.WriteLine("5 - Ver Rendas de Um Mês");
-                Console.WriteLine("6 - Apagar todas as Carteiras");
+                Console.WriteLine("5 - Apagar todas as Carteiras");
+                Console.WriteLine("-----------------------");
                 Console.WriteLine("0 - Sair");
+                Console.WriteLine("-----------------------");
                 escolha = int.Parse(Console.ReadLine());
                 switch (escolha)
                 {
@@ -230,9 +232,6 @@ namespace Ada
                         statsCP(cp[p]);
                         break;
                     case 5:
-                        addSalarioCP(cp[p]);
-                        break;
-                    case 6:
                         limparCP();
                         escolha = 0;
                         break;
@@ -402,13 +401,15 @@ namespace Ada
             int escolha = 10;
             while (escolha != 0)
             {
+                Console.WriteLine("-----------------------");
                 Console.WriteLine("1 - Cadastrar Emprego");
                 Console.WriteLine("2 - Add um Gasto");
                 Console.WriteLine("3 - Add uma Renda");
                 Console.WriteLine("4 - Ver Gastos de Um Mês");
-                Console.WriteLine("5 - Ver Rendas de Um Mês");
-                Console.WriteLine("6 - Apagar todas as Carteiras");
+                Console.WriteLine("5 - Apagar todas as Carteiras");
+                Console.WriteLine("-----------------------");
                 Console.WriteLine("0 - Sair");
+                Console.WriteLine("-----------------------");
                 escolha = int.Parse(Console.ReadLine());
                 switch (escolha)
                 {
@@ -425,9 +426,6 @@ namespace Ada
                         statsCT(ct[p]);
                         break;
                     case 5:
-                        addSalarioCT(ct[p]);
-                        break;
-                    case 6:
                         limparCT();
                         escolha = 0;
                         break;

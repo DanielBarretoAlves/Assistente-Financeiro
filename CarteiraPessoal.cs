@@ -152,12 +152,10 @@ namespace Ada
         {
             if (File.Exists(@"Arquivos/agenda" + NomeCarteira + ".json"))
             {
-                Console.WriteLine("Existe");
                 lerAgenda();
             }
             else
             {
-                Console.WriteLine("!Existe");
                 limparAgenda();
             }
         }
