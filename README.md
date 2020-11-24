@@ -6,7 +6,7 @@
   <h3 align="center">ADA</h3>
 
   <p align="center">
-    Uma Assistente Financeira, que te ajuda a todo momento
+    Uma Assistente Financeira nada formal, que te ajuda a todo momento pelo menos quando ela está de bom humor
     <br />
     <a href="https://github.com/DanielBarretoAlves/Assistente-Financeiro"><strong>Explore os Arquivos »</strong></a>
   </p>
@@ -20,13 +20,17 @@ Como Iniciar...
 
 ### Prerequisitos
 
-O que é necessario para rodar o projeto.
+Dotnet SDK, Visual Studio Code, Newtonsoft JSON, Windows 8 ou Superior.
 
 ### Instalação
 
 1. Clone o repositorio
 
-2. Etc..
+2. Intale a Extensão C# no Visual Studio Code.
+
+3. Abra o Terminal
+
+4. Rode o Comando: dotnet run
 
 
 
@@ -34,9 +38,10 @@ O que é necessario para rodar o projeto.
 <!-- USAGE EXAMPLES -->
 ## Uso
 
-Exemplo de como o projeto pode ser utilizado.
+A Assistente Ada pode ser muito util ná hora de organizar suas finanças pessoais e na hora de planejar gastos futuros, quando deve guardar dinheiro, ela tambem tem uma versão voltada para o mercado profissional apesar de bem simples é uma alternativa acessivel.
+Comparada com outras ferramentas do mercado Ada é simples para utilizar oque a torna muito aceissivel para pessoas que não possuem conhecimento de organização financeira.
 
-_Ex Da Documentação [Documentação](https://example.com)_
+-Documentação [Documentação](https://docs.google.com/document/d/1jn3Sm4WpYXu0ZbqDec1L9EmmMvGoxOjlqUfGl5XftgM/edit?usp=sharing)_
 
 
 
