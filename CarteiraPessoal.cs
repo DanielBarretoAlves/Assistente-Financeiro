@@ -150,7 +150,6 @@ namespace Ada
         // Verifica se a agenda existe caso sim ele manda ler, caso não ele cria e escrever
         public void checkAgenda()
         {
-            Console.WriteLine("Entrou-------------------------------------------------------");
             if (File.Exists(@"Arquivos/agenda" + NomeCarteira + ".json"))
             {
                 Console.WriteLine("Existe");

@@ -413,19 +413,19 @@ namespace Ada
                 switch (escolha)
                 {
                     case 1:
-                        addSalarioCP(ct[p]);
+                        addSalarioCT(ct[p]);
                         break;
                     case 2:
-                        addGastoCP(ct[p]);
+                        addGastoCT(ct[p]);
                         break;
                     case 3:
-                        addRendaCP(ct[p]);
+                        addRendaCT(ct[p]);
                         break;
                     case 4:
-                        statsCP(ct[p]);
+                        statsCT(ct[p]);
                         break;
                     case 5:
-                        addSalarioCP(ct[p]);
+                        addSalarioCT(ct[p]);
                         break;
                     case 6:
                         limparCT();
