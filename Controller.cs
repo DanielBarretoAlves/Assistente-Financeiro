@@ -41,6 +41,7 @@ namespace Ada
             else
             {
                 limparCP();
+                menuCP(createCP());
             }
         }
 
@@ -191,13 +192,25 @@ namespace Ada
 
         }
 
-        public void createCP()
+        private CarteiraPessoal createCP()
         {
             Console.WriteLine("Fala o Nome");
             string name = Console.ReadLine();
             Console.WriteLine("Informe quanto você já tem guardado");
             float bud = float.Parse(Console.ReadLine());
             CarteiraPessoal c = new CarteiraPessoal(name, bud);
+            expandirCP();
+            for (var i = 0; i < cp.Length; i++)
+            {
+                if (cp[i] == null)
+                {
+                    Console.WriteLine("entrou");
+                    cp[i] = c;
+                    writeCP();
+                    return cp[i];
+                }
+            }
+            return null;
         }
 
 
