@@ -161,36 +161,41 @@ namespace Ada
 
         public void menuCP(CarteiraPessoal c)
         {
-            Console.WriteLine("1 - Cadastrar Emprego");
-            Console.WriteLine("2 - Add um Gasto");
-            Console.WriteLine("3 - Add uma Renda");
-            Console.WriteLine("4 - Ver Gastos de Um Mês");
-            Console.WriteLine("5 - Ver Rendas de Um Mês");
-            Console.WriteLine("6 - Analisar Dados de Um Mês");
-            Console.WriteLine("0 - Sair");
-            int escolha = int.Parse(Console.ReadLine());
-            switch (escolha)
+
+            int escolha = 10;
+            while (escolha != 0)
             {
-                case 1:
-                    addSalarioCP(c);
-                    break;
-                case 2:
-                    addGastoCP(c);
-                    break;
-                case 3:
-                    addRendaCP(c);
-                    break;
-                case 4:
-                    statsCP(c);
-                    break;
-                case 5:
-                    addSalarioCP(c);
-                    break;
-                case 6:
-                    addSalarioCP(c);
-                    break;
-                default:
-                    break;
+                Console.WriteLine("1 - Cadastrar Emprego");
+                Console.WriteLine("2 - Add um Gasto");
+                Console.WriteLine("3 - Add uma Renda");
+                Console.WriteLine("4 - Ver Gastos de Um Mês");
+                Console.WriteLine("5 - Ver Rendas de Um Mês");
+                Console.WriteLine("6 - Analisar Dados de Um Mês");
+                Console.WriteLine("0 - Sair");
+                escolha = int.Parse(Console.ReadLine());
+                switch (escolha)
+                {
+                    case 1:
+                        addSalarioCP(c);
+                        break;
+                    case 2:
+                        addGastoCP(c);
+                        break;
+                    case 3:
+                        addRendaCP(c);
+                        break;
+                    case 4:
+                        statsCP(c);
+                        break;
+                    case 5:
+                        addSalarioCP(c);
+                        break;
+                    case 6:
+                        addSalarioCP(c);
+                        break;
+                    default:
+                        break;
+                }
             }
 
         }

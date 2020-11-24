@@ -10,19 +10,19 @@ namespace Ada
     class CarteiraProfissional : Bolso
     {
         private string nomeCarteira;
-        private float buget;
+        private float budget;
         private Mes[] agenda = new Mes[12];
 
         //Construtor
         public CarteiraProfissional(string nomeCarteira, float buget)
         {
             this.nomeCarteira = nomeCarteira;
-            this.buget = buget;
+            this.budget = buget;
             checkAgenda();
         }
          //GETTS & SETTERS
         public string NomeCarteira { get => nomeCarteira; set => nomeCarteira = value; }
-        public float Buget { get => buget; set => buget = value; }
+        public float Buget { get => budget; set => budget = value; }
         public Mes[] Agenda { get => agenda; set => agenda = value; }
 
         public bool addGasto()
@@ -138,7 +138,7 @@ namespace Ada
         {
             for (var i = 0; i < agenda.Length; i++)
             {
-                Mes m = new Mes(i, nomeCarteira);
+                Mes m = new Mes(i, nomeCarteira, budget);
                 agenda[i] = m;
             }
             escreverAgenda();

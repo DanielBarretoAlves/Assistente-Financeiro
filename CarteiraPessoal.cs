@@ -10,7 +10,7 @@ namespace Ada
     public class CarteiraPessoal : Bolso
     {
         private string nomeCarteira;
-        private float buget;
+        private float budget;
         private Mes[] agenda = new Mes[12];
 
 
@@ -18,7 +18,7 @@ namespace Ada
         public CarteiraPessoal(string nomeCarteira, float buget)
         {
             this.nomeCarteira = nomeCarteira;
-            this.buget = buget;
+            this.budget = buget;
             checkAgenda();
 
 
@@ -26,7 +26,7 @@ namespace Ada
 
         //GETTS & SETTERS
         public string NomeCarteira { get => nomeCarteira; set => nomeCarteira = value; }
-        public float Buget { get => buget; set => buget = value; }
+        public float Buget { get => budget; set => budget = value; }
         public Mes[] Agenda { get => agenda; set => agenda = value; }
 
         public bool addGasto()
@@ -45,6 +45,8 @@ namespace Ada
             while (current < goal)
             {
                 agenda[current].addGasto(g);
+                budget = budget - g.Valor;
+                agenda[current].Budget = budget;
                 current++;
             }
             escreverAgenda();
@@ -100,6 +102,8 @@ namespace Ada
             while (current < goal)
             {
                 agenda[current].addRenda(r);
+                budget += r.Valor;
+                agenda[current].Budget = budget;
                 current++;
             }
             escreverAgenda();
@@ -118,6 +122,7 @@ namespace Ada
             for (int i = 0; i < 12; i++)
             {
                 agenda[i].addSalario(s);
+                agenda[i].Budget = budget;
                 
             }
             escreverAgenda();
@@ -167,7 +172,7 @@ namespace Ada
         {
             for (var i = 0; i < agenda.Length; i++)
             {
-                Mes m = new Mes(i, nomeCarteira);
+                Mes m = new Mes(i, nomeCarteira, budget);
                 agenda[i] = m;
             }
             escreverAgenda();

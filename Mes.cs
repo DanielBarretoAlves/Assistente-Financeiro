@@ -54,7 +54,7 @@ namespace Ada
         //     maxGasto = 0;
         // }
         // Constructor load
-        public Mes(int num, string nomeCarteira)
+        public Mes(int num, string nomeCarteira, float budget)
         {
 
             this.nomeCarteira = nomeCarteira;
@@ -63,6 +63,8 @@ namespace Ada
             rendas = new Renda[50];
             salarios = new Salario[3];
             maxGasto = 0;
+            maxRenda = 0;
+            this.budget = budget;
             // updateGastos();
         }
         public string Nome { get => nome; set => nome = value; }
@@ -268,6 +270,7 @@ namespace Ada
                 {
                     gastos[i] = g;
                     // writeGastos();
+                    maxGasto+= g.Valor;
                     return true;
                 }
             }
@@ -284,6 +287,7 @@ namespace Ada
                 if (rendas[i] == null)
                 {
                     rendas[i] = r;
+                    maxRenda += r.Valor;
                     return true;
                 }
             }
@@ -335,41 +339,41 @@ namespace Ada
 
         }
 
-        private void calcGastos()
-        {
-            for (int i = 0; i < getGastosTamanho(); i++)
-            {
-                maxGasto += gastos[i].Valor;
-            }
-            writeGastos();
-            Console.WriteLine("Gasto Total Do Mês: " + maxGasto);
-        }
+        // private void calcGastos()
+        // {
+        //     for (int i = 0; i < getGastosTamanho(); i++)
+        //     {
+        //         maxGasto += gastos[i].Valor;
+        //     }
+        //     writeGastos();
+        //     // Console.WriteLine("Gasto Total Do Mês: " + maxGasto);
+        // }
 
-        private void calcRenda()
-        {
-            for (int i = 0; i < getRendasTamanho(); i++)
-            {
-                maxRenda += rendas[i].Valor;
-            }
-            for (int i = 0; i < getSalariosTamanho(); i++)
-            {
-                maxRenda += salarios[i].Valor;
-            }
-            writeGastos();
-            Console.WriteLine("Lucro Total do Mês: " + maxRenda);
-        }
+        // private void calcRenda()
+        // {
+        //     for (int i = 0; i < getRendasTamanho(); i++)
+        //     {
+        //         maxRenda += rendas[i].Valor;
+        //     }
+        //     for (int i = 0; i < getSalariosTamanho(); i++)
+        //     {
+        //         maxRenda += salarios[i].Valor;
+        //     }
+        //     writeGastos();
+        //     // Console.WriteLine("Lucro Total do Mês: " + maxRenda);
+        // }
 
-        private void calcbudget()
-        {
-            balanco = maxRenda - maxGasto;
-            Console.WriteLine("Saldo final do Mês: " + balanco);
-        }
+        // private void calcbudget()
+        // {
+        //     balanco = maxRenda - maxGasto;
+        //     Console.WriteLine("Saldo final do Mês: " + balanco);
+        // }
 
         public void stats()
         {
-            calcRenda();
-            calcGastos();
-            calcbudget();
+            Console.WriteLine("Gastos do Mês: " + maxGasto);
+            Console.WriteLine("Lucro do Mês: " + maxRenda);
+            Console.WriteLine("Saldo Final do Mês: " + budget);
         }
 
 
