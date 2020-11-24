@@ -12,6 +12,8 @@ namespace Ada
         // EX De Nomeclatura de Gastos GastosDanielMar.json
         private string nome;
 
+        private float budget;
+
         private string nomeCarteira;
         private float balanco;
         private Gasto[] gastos; // Verificar se vai armazenar no json
@@ -71,6 +73,7 @@ namespace Ada
         public Salario[] Salarios { get => salarios; set => salarios = value; }
         public Renda[] Rendas { get => rendas; set => rendas = value; }
         public string NomeCarteira { get => nomeCarteira; set => nomeCarteira = value; }
+        public float Budget { get => budget; set => budget = value; }
 
         //Metodos
 
@@ -332,7 +335,7 @@ namespace Ada
 
         }
 
-        public void calcGastos()
+        private void calcGastos()
         {
             for (int i = 0; i < getGastosTamanho(); i++)
             {
@@ -342,7 +345,7 @@ namespace Ada
             Console.WriteLine("Gasto Total Do Mês: " + maxGasto);
         }
 
-        public void calcRenda()
+        private void calcRenda()
         {
             for (int i = 0; i < getRendasTamanho(); i++)
             {
@@ -354,6 +357,19 @@ namespace Ada
             }
             writeGastos();
             Console.WriteLine("Lucro Total do Mês: " + maxRenda);
+        }
+
+        private void calcbudget()
+        {
+            balanco = maxRenda - maxGasto;
+            Console.WriteLine("Saldo final do Mês: " + balanco);
+        }
+
+        public void stats()
+        {
+            calcRenda();
+            calcGastos();
+            calcbudget();
         }
 
 

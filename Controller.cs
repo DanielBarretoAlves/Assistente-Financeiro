@@ -156,8 +156,7 @@ namespace Ada
         {
             Console.WriteLine("Informe o Mes que deseja visualizar");
             int mes = int.Parse(Console.ReadLine());
-            c.Agenda[mes].calcGastos();
-            c.Agenda[mes].calcRenda();
+            c.Agenda[mes].stats();
         }
 
         public void menuCP(CarteiraPessoal c)
