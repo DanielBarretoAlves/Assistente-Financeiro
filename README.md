@@ -58,7 +58,7 @@ Comparada com outras ferramentas do mercado Ada é simples para utilizar oque a 
 
 Daniel Barreto - [Linkedin](https://www.linkedin.com/in/daniel-barreto-63869811a/)
 
-Project Link: [https://github.com/DanielBarretoAlves/Assistente-Financeiro](https://github.com/DanielBarretoAlves/Assistente-Financeiro)
+Link do Projeto: [https://github.com/DanielBarretoAlves/Assistente-Financeiro](https://github.com/DanielBarretoAlves/Assistente-Financeiro)
 
 
 
