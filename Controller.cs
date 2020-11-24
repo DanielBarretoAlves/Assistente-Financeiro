@@ -21,7 +21,30 @@ namespace Ada
             nomesCarteiras = new string[50];
             cp = new CarteiraPessoal[20];
             ct = new CarteiraProfissional[20];
-            updateCP();
+            int callAda = 10;
+            Console.WriteLine("Olá sou Ada sua assistente financeira");
+            Console.WriteLine("Nem vem querer ser formal comigo não sou uma engomadinha ;-)");
+            while (callAda != 0)
+            {
+                Console.WriteLine("Escolhe ai oq vc quer:");
+                Console.WriteLine("1 - Carteira Pessoal");
+                Console.WriteLine("2 - Carteira Profissional");
+                Console.WriteLine("0 - Sair");
+                callAda = int.Parse(Console.ReadLine());
+                switch (callAda)
+                {
+                    case 1:
+                    updateCP();
+                        break;
+                    case 2:
+                    updateCT();
+                        break;
+                    default:
+                        break;
+                }
+                
+            }
+            // updateCP();
         }
 
         // Getts e Setters
