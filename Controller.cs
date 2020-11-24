@@ -10,7 +10,7 @@ namespace Ada
     public class Controller
     {
         private CarteiraPessoal[] cp;
-        private CarteiraProfissioanl[] ct;
+        private CarteiraProfissional[] ct;
 
 
         private String[] nomesCarteiras;
@@ -20,12 +20,14 @@ namespace Ada
         {
             nomesCarteiras = new string[50];
             cp = new CarteiraPessoal[20];
+            ct = new CarteiraProfissional[20];
             updateCP();
         }
 
         // Getts e Setters
         public string[] NomesCarteiras { get => nomesCarteiras; set => nomesCarteiras = value; }
         internal CarteiraPessoal[] Cp { get => cp; set => cp = value; }
+        internal CarteiraProfissional[] Ct { get => ct; set => ct = value;}
 
 
         //Metodos CP
@@ -237,6 +239,205 @@ namespace Ada
             }
             return 0;
         }
+
+        //Metodos CT -------------------------------------------------------------
+
+        private void updateCT()
+        {
+            // gastos = null;
+            if (File.Exists(@"Arquivos/carteirasProfissionais.json"))
+            {
+                readCT();
+                Console.WriteLine("Desejá utlizar uma carteira já existente ou criar uma nova?");
+                Console.WriteLine("1 - Criar Nova Carteira");
+                Console.WriteLine("2 - Procurar Carteira Existente");
+                int value = int.Parse(Console.ReadLine());
+                switch (value)
+                {
+                    case 1:
+                    menuCT(createCT());
+                        break;
+                    default:
+                    menuCT(selectCT());
+                        break;
+                }
+                
+                
+            }
+            else
+            {
+                limparCT();
+                menuCT(createCT());
+            }
+        }
+
+        private bool writeCT()
+        {
+            var json_serializado = JsonConvert.SerializeObject(ct);
+            File.WriteAllText(@"Arquivos/carteirasProfissionais.json", json_serializado);
+            return (File.Exists(@"Arquivos/carteirasProfissionais.json"));
+        }
+        private bool readCT()
+        {
+            String st = "";
+            using (var sr = new StreamReader(@"Arquivos/carteirasProfissionais.json"))
+            {
+                st += sr.ReadToEnd();
+
+            }
+            ct = JsonConvert.DeserializeObject<CarteiraProfissional[]>(st);
+            return true;
+        }
+
+        public void limparCT()
+        {
+            ct = new CarteiraProfissional[20];
+            writeCT();
+        }
+
+        public bool addCarteiraT()
+        {
+            expandirCT();
+            Console.WriteLine("Fala seu nome");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Informe quanto você já tem guardado");
+            float money = float.Parse(Console.ReadLine());
+            CarteiraProfissional c = new CarteiraProfissional(nome, money);
+            for (int i = 0; i < cp.Length; i++)
+            {
+                if (ct[i] == null)
+                {
+                    ct[i] = c;
+                    writeCT();
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
+        private void expandirCT()
+        {
+            CarteiraProfissional[] reserva = new CarteiraProfissional[this.cp.Length * 2];
+            if (IsFull(ct))
+            {
+                for (int i = 0; i < ct.Length; i++)
+                {
+                    reserva[i] = ct[i];
+                }
+                ct = reserva;
+            }
+
+        }
+        
+
+        private int selectCT()
+        {
+            Console.WriteLine("Selecione Carteira Profissional:");
+            for (var i = 0; i < ct.Length; i++)
+            {
+                if (ct[i] != null)
+                {
+                    Console.WriteLine(i + " - " + ct[i].NomeCarteira);
+                }
+            }
+            int escolha = int.Parse(Console.ReadLine());
+            return escolha;
+
+        }
+
+        private void addGastoCT(CarteiraProfissional c)
+        {
+            c.addGasto();
+            writeCT();
+        }
+
+        private void addRendaCT(CarteiraProfissional c)
+        {
+            c.addRenda();
+            writeCT();
+        }
+
+        private void addSalarioCT(CarteiraProfissional c)
+        {
+            c.addSalario();
+            writeCT();
+        }
+
+        private void statsCT(CarteiraProfissional c)
+        {
+            Console.WriteLine("Informe o Mes que deseja visualizar, de 1 a 12 pelo amor de Deus né!");
+            int mes = int.Parse(Console.ReadLine());
+            mes--;
+            c.Agenda[mes].stats();
+        }
+
+        public void menuCT(int p)
+        {
+
+            int escolha = 10;
+            while (escolha != 0)
+            {
+                Console.WriteLine("1 - Cadastrar Emprego");
+                Console.WriteLine("2 - Add um Gasto");
+                Console.WriteLine("3 - Add uma Renda");
+                Console.WriteLine("4 - Ver Gastos de Um Mês");
+                Console.WriteLine("5 - Ver Rendas de Um Mês");
+                Console.WriteLine("6 - Apagar todas as Carteiras");
+                Console.WriteLine("0 - Sair");
+                escolha = int.Parse(Console.ReadLine());
+                switch (escolha)
+                {
+                    case 1:
+                        addSalarioCP(ct[p]);
+                        break;
+                    case 2:
+                        addGastoCP(ct[p]);
+                        break;
+                    case 3:
+                        addRendaCP(ct[p]);
+                        break;
+                    case 4:
+                        statsCP(ct[p]);
+                        break;
+                    case 5:
+                        addSalarioCP(ct[p]);
+                        break;
+                    case 6:
+                        limparCT();
+                        escolha = 0;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+        }
+
+        private int createCT()
+        {
+            Console.WriteLine("Fala o Nome");
+            string name = Console.ReadLine();
+            Console.WriteLine("Informe quanto você já tem guardado");
+            float bud = float.Parse(Console.ReadLine());
+            CarteiraProfissional c = new CarteiraProfissional(name, bud);
+            expandirCT();
+            for (var i = 0; i < ct.Length; i++)
+            {
+                if (ct[i] == null)
+                {
+                    ct[i] = c;
+                    writeCT();
+                    return i;
+                }
+            }
+            return 0;
+        }
+
+
+
+
 
 
 
