@@ -191,7 +191,31 @@ namespace Ada
             return tamanho;
         }
 
+        public int getRendasTamanho()
+        {
+            int tamanho = 0;
+            for (int i = 0; i < rendas.Length; i++)
+            {
+                if (rendas[i] != null)
+                {
+                    tamanho++;
+                }
+            }
+            return tamanho;
+        }
 
+        public int getSalariosTamanho()
+        {
+            int tamanho = 0;
+            for (int i = 0; i < salarios.Length; i++)
+            {
+                if (salarios[i] != null)
+                {
+                    tamanho++;
+                }
+            }
+            return tamanho;
+        }
         public void updateMaxGasto()
         {
             for (int i = 0; i < getGastosTamanho(); i++)
@@ -315,7 +339,21 @@ namespace Ada
                 maxGasto += gastos[i].Valor;
             }
             writeGastos();
-            Console.WriteLine("Gasto Maximo: " + maxGasto);
+            Console.WriteLine("Gasto Total Do Mês: " + maxGasto);
+        }
+
+        public void calcRenda()
+        {
+            for (int i = 0; i < getRendasTamanho(); i++)
+            {
+                maxRenda += rendas[i].Valor;
+            }
+            for (int i = 0; i < getSalariosTamanho(); i++)
+            {
+                maxRenda += salarios[i].Valor;
+            }
+            writeGastos();
+            Console.WriteLine("Lucro Total do Mês: " + maxRenda);
         }
 
 
