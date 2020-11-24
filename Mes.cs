@@ -269,8 +269,8 @@ namespace Ada
                 if (gastos[i] == null)
                 {
                     gastos[i] = g;
-                    // writeGastos();
                     maxGasto+= g.Valor;
+                    budget -= g.Valor;
                     return true;
                 }
             }
@@ -288,6 +288,7 @@ namespace Ada
                 {
                     rendas[i] = r;
                     maxRenda += r.Valor;
+                    budget += r.Valor;
                     return true;
                 }
             }
@@ -304,6 +305,10 @@ namespace Ada
                 if (salarios[i] == null)
                 {
                     salarios[i] = s;
+                    maxRenda += s.Valor;
+                    budget += s.Valor;
+                    Console.WriteLine("Salario: "+ s.Valor);
+                    Console.WriteLine("Budget: " + budget);
                     return true;
                 }
             }

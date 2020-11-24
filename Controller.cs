@@ -19,7 +19,7 @@ namespace Ada
         {
             nomesCarteiras = new string[50];
             cp = new CarteiraPessoal[20];
-            limparCP();
+            // limparCP();
             updateCP();
 
 
@@ -34,9 +34,24 @@ namespace Ada
         private void updateCP()
         {
             // gastos = null;
-            if (File.Exists(@"Arquivos/carteiras.json"))
+            if (File.Exists(@"Arquivos/carteirasPessoais.json"))
             {
                 readCP();
+                Console.WriteLine("Desejá utlizar uma carteira já existente ou criar uma nova?");
+                Console.WriteLine("1 - Criar Nova Carteira");
+                Console.WriteLine("2 - Procurar Carteira Existente");
+                int value = int.Parse(Console.ReadLine());
+                switch (value)
+                {
+                    case 1:
+                    menuCP(cp[createCP()]);
+                        break;
+                    default:
+                    menuCP(cp[selectCP()]);
+                        break;
+                }
+                
+                
             }
             else
             {
@@ -124,10 +139,13 @@ namespace Ada
 
         private int selectCP()
         {
-            Console.WriteLine("Selecione Carteira Pessoal");
+            Console.WriteLine("Selecione Carteira Pessoal:");
             for (var i = 0; i < cp.Length; i++)
             {
-                Console.WriteLine(i + " - " + cp[i].NomeCarteira);
+                if (cp[i] != null)
+                {
+                    Console.WriteLine(i + " - " + cp[i].NomeCarteira);
+                }
             }
             int escolha = int.Parse(Console.ReadLine());
             return escolha;
