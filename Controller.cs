@@ -10,6 +10,7 @@ namespace Ada
     public class Controller
     {
         private CarteiraPessoal[] cp;
+        private CarteiraProfissioanl[] ct;
 
 
         private String[] nomesCarteiras;
@@ -19,10 +20,7 @@ namespace Ada
         {
             nomesCarteiras = new string[50];
             cp = new CarteiraPessoal[20];
-            // limparCP();
             updateCP();
-
-
         }
 
         // Getts e Setters
