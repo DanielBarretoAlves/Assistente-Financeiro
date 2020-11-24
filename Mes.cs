@@ -376,9 +376,11 @@ namespace Ada
         //Mostra os Dados do Mês
         public void stats()
         {
-            Console.WriteLine("Gastos do Mês: " + maxGasto);
-            Console.WriteLine("Lucro do Mês: " + maxRenda);
-            Console.WriteLine("Saldo Final do Mês: " + budget);
+            Console.WriteLine("***************************");
+            Console.WriteLine("* Gastos do Mês: " + maxGasto);
+            Console.WriteLine("* Lucro do Mês: " + maxRenda);
+            Console.WriteLine("* Saldo Final do Mês: " + budget);
+            Console.WriteLine("***************************");
         }
 
 
