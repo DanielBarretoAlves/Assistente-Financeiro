@@ -41,6 +41,7 @@ namespace Ada
             Gasto g = new Gasto(selectCategoria(), generateImportancia(), generateMes(), generateValue(), recorrente, generateNome());
             //Recorrencia
             int goal = g.Mes + g.Tipo;
+            Console.WriteLine("Mes: "+ g.Mes);
             int current = g.Mes;
             while (current < goal)
             {
@@ -132,12 +133,15 @@ namespace Ada
         // Verifica se a agenda existe caso sim ele manda ler, caso não ele cria e escrever
         public void checkAgenda()
         {
+            Console.WriteLine("Entrou-------------------------------------------------------");
             if (File.Exists(@"Arquivos/agenda" + NomeCarteira + ".json"))
             {
+                Console.WriteLine("Existe");
                 lerAgenda();
             }
             else
             {
+                Console.WriteLine("!Existe");
                 limparAgenda();
             }
         }
