@@ -32,9 +32,9 @@ namespace Ada
         public bool addGasto()
         {
 
-            Console.WriteLine("Faz o seguinte digita o numero de vezes q vai repetir segue o ex");
-            Console.WriteLine(" 1 - Não Repete");
-            Console.WriteLine(" 2 ou +  Numero de meses que vai repetir");
+            Console.WriteLine("Fala ai vai pagar essa conta em quantos meses?");
+            Console.WriteLine(" 1 - Vai ser tudo em uma porrada só");
+            Console.WriteLine(" 2 ou +  Numero de meses que vou ficar pagamdo");
             int recorrente = int.Parse(Console.ReadLine());
             // TODO: Categoria
             Gasto g = new Gasto(selectCategoria(), generateImportancia(), generateMes(), generateValue(), recorrente, generateNome());
@@ -50,12 +50,9 @@ namespace Ada
             while (current < goal)
             {
                 agenda[current].addGasto(g);
-                Console.WriteLine("Budgte no Retorno: " + agenda[current].Budget);
                 for (int i = current; i < 12; i++)
                 {
-
                     agenda[i].Budget = agenda[i].Budget - g.Valor;
-                    // Console.WriteLine("Budgt no Loop: " + agenda[i].Budget);
                 }
                 current++;
             }
@@ -68,14 +65,14 @@ namespace Ada
 
         private int generateImportancia()
         {
-            Console.WriteLine("De 1 a 5 qual sendo 1 o mais baixo, qual o nivel de importancia desse gasto? ");
+            Console.WriteLine("De 1 a 5 sendo q 1 é o mais baixo, qual o nivel de importancia desse gasto? ");
             int importancia = int.Parse(Console.ReadLine());
             return importancia;
         }
 
         private int generateMes()
         {
-            Console.WriteLine("Fala o Mês ai, de 1 a 12 por favor nem vem botar texto");
+            Console.WriteLine("Fala o Mês ai, de 1 a 12 por favor nem vem botar texto \\(^o^)/");
             int mes = int.Parse(Console.ReadLine());
             mes--;
             return mes;
@@ -83,31 +80,31 @@ namespace Ada
 
         private float generateValue()
         {
-            Console.WriteLine("Diga o Valor:");
+            Console.WriteLine("Quanto vai custar a porrada?");
             float valor = float.Parse(Console.ReadLine());
             return valor;
         }
 
         private string generateNome()
         {
-            Console.WriteLine("de um nome");
+            Console.WriteLine("Fala um Nome");
             string nome = Console.ReadLine();
             return nome;
         }
 
         public bool addRenda()
         {
-            Console.WriteLine("Me Fala o Titulo da Renda");
-            Console.WriteLine("Algo tipo.. sei lá poem um nome ai");
+            Console.WriteLine("Poem uma descrição pra grana q vc vai pegar");
+            Console.WriteLine("Algo tipo.. sei lá um nome!");
             string nome = Console.ReadLine();
-            Console.WriteLine("Fala o valor q tu vai ganhar");
+            Console.WriteLine("Fala o valor q C vai ganhar");
             float valor = float.Parse(Console.ReadLine());
-            Console.WriteLine("Fala o Mês ai, de 1 a 12 por favor nem vem botar texto");
+            Console.WriteLine("Fala o Mês ai, de 1 a 12 por favor nem vem botar texto >.<");
             int mes = int.Parse(Console.ReadLine());
             mes--;
             Console.WriteLine("Faz o seguinte digita o numero de vezes q vai repetir segue o ex");
             Console.WriteLine(" 1 - Não Repete");
-            Console.WriteLine(" 2+  Numero de meses que vai repetir");
+            Console.WriteLine(" 2 ou +  Numero de meses que vai repetir");
             int repete = int.Parse(Console.ReadLine());
             Renda r = new Renda(mes, valor, repete, nome);
             int goal = r.Mes + r.Tipo;
@@ -119,7 +116,6 @@ namespace Ada
                 for (int i = current; i < 12; i++)
                 {
                     agenda[i].Budget = agenda[i].Budget + r.Valor;
-                    // Console.WriteLine("Budgt no Loop: " + agenda[i].Budget);
                 }
                 current++;
             }
@@ -129,10 +125,9 @@ namespace Ada
 
         public bool addSalario()
         {
-            // (float valor, int tipo, string nome)
-            Console.WriteLine("Onde ou com o que voce trampa põe um titulo ai");
+            Console.WriteLine("Fala onde você trabalha meu bem");
             String name = Console.ReadLine();
-            Console.WriteLine("Informe o Salario");
+            Console.WriteLine("Ganha Quanto?");
             float valor = float.Parse(Console.ReadLine());
             Salario s = new Salario(valor, name);
             // vai add os 12 meses do ano

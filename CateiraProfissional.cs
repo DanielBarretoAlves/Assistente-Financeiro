@@ -27,49 +27,52 @@ namespace Ada
 
         public bool addGasto()
         {
-            Console.WriteLine("Faz o seguinte digita o numero de vezes q vai repetir segue o ex");
-            Console.WriteLine(" 1 - Não Repete");
-            Console.WriteLine(" 2 ou +  Numero de meses que vai repetir");
+            Console.WriteLine("Informe em quantas parcelas será o pagamento:");
+            Console.WriteLine(" 1 - Apenas Um Pagamento");
+            Console.WriteLine(" 2 ou +  Numero de meses que ira se repetir");
             int recorrente = int.Parse(Console.ReadLine());
             // TODO: Categoria
             Gasto g = new Gasto(selectCategoria(), generateImportancia(), generateMes(), generateValue(), recorrente, generateNome());
             //Recorrencia
             int goal = g.Mes + g.Tipo;
-            Console.WriteLine("Mes: " + g.Mes);
             int current = g.Mes;
-
+            g.Valor -= calcDesconto(g);
             budget = agenda[current].Budget;
-            // agenda[current].addGasto(g);
-
-
             while (current < goal)
             {
                 agenda[current].addGasto(g);
-                Console.WriteLine("Budgte no Retorno: " + agenda[current].Budget);
                 for (int i = current; i < 12; i++)
                 {
-
                     agenda[i].Budget = agenda[i].Budget - g.Valor;
-                    // Console.WriteLine("Budgt no Loop: " + agenda[i].Budget);
                 }
                 current++;
             }
 
-
-
             escreverAgenda();
             return true;
         }
+        private float calcDesconto(Gasto g){
+            float desconto = 0;
+            Console.WriteLine("Informe a quantidade que será comprado");
+            int qtt = int.Parse(Console.ReadLine());
+            Console.WriteLine("Informe a porcentagem do Desconto por unidade");
+            float val = float.Parse(Console.ReadLine());
+            float calc = (g.Valor * val)/100;
+            desconto = (calc * qtt);
+            return desconto;
+        }
+
+
         private int generateImportancia()
         {
-            Console.WriteLine("De 1 a 5 qual sendo 1 o mais baixo, qual o nivel de importancia desse gasto? ");
+            Console.WriteLine("Escolha um nível de Importancia: de 1 a 5");
             int importancia = int.Parse(Console.ReadLine());
             return importancia;
         }
 
         private int generateMes()
         {
-            Console.WriteLine("Fala o Mês ai, de 1 a 12 por favor nem vem botar texto");
+            Console.WriteLine("Informe o Mês: de 1 a 12");
             int mes = int.Parse(Console.ReadLine());
             mes--;
             return mes;
@@ -77,30 +80,29 @@ namespace Ada
 
         private float generateValue()
         {
-            Console.WriteLine("Diga o Valor:");
+            Console.WriteLine("Informe o Valor:");
             float valor = float.Parse(Console.ReadLine());
             return valor;
         }
 
         private string generateNome()
         {
-            Console.WriteLine("de um nome");
+            Console.WriteLine("Informe um nome");
             string nome = Console.ReadLine();
             return nome;
         }
 
         public bool addRenda()
         {
-            Console.WriteLine("Me Fala o Titulo da Renda");
-            Console.WriteLine("Algo tipo.. sei lá poem um nome ai");
+            Console.WriteLine("Titulo do Aporte:");
             string nome = Console.ReadLine();
-            Console.WriteLine("Fala o valor q tu vai ganhar");
+            Console.WriteLine("Valor:");
             float valor = float.Parse(Console.ReadLine());
-            Console.WriteLine("Fala o Mês ai, de 1 a 12 por favor nem vem botar texto");
+            Console.WriteLine("Mês: de 1 a 12");
             int mes = int.Parse(Console.ReadLine());
             mes--;
-            Console.WriteLine("Faz o seguinte digita o numero de vezes q vai repetir segue o ex");
-            Console.WriteLine(" 1 - Não Repete");
+            Console.WriteLine("Numero de Parcelas");
+            Console.WriteLine(" 1 - Apenas uma");
             Console.WriteLine(" 2+  Numero de meses que vai repetir");
             int repete = int.Parse(Console.ReadLine());
             Renda r = new Renda(mes, valor, repete, nome);
@@ -113,7 +115,6 @@ namespace Ada
                 for (int i = current; i < 12; i++)
                 {
                     agenda[i].Budget = agenda[i].Budget + r.Valor;
-                    // Console.WriteLine("Budgt no Loop: " + agenda[i].Budget);
                 }
                 current++;
             }
@@ -123,8 +124,7 @@ namespace Ada
 
         public bool addSalario()
         {
-            // (float valor, int tipo, string nome)
-            Console.WriteLine("Onde ou com o que voce trampa põe um titulo ai");
+            Console.WriteLine("Informe o Nome da Empresa");
             String name = Console.ReadLine();
             Console.WriteLine("Informe o Salario");
             float valor = float.Parse(Console.ReadLine());

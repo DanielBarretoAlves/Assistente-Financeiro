@@ -293,7 +293,6 @@ namespace Ada
                 {
                     gastos[i] = g;
                     maxGasto += g.Valor;
-                    Console.WriteLine("Valor Budget Final" + budget);
                     return true;
                 }
             }

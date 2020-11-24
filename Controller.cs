@@ -37,6 +37,7 @@ namespace Ada
                     updateCP();
                         break;
                     case 2:
+                    Console.WriteLine("Aff.. então tá vou tentar ser um pouco mais formal, mas não espere muita coisa");
                     updateCT();
                         break;
                     default:
